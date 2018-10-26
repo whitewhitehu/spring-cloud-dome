@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: server-crm
+  datasource:
+    url: jdbc:mysql://106.12.40.123:3306/webdb?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 712yqf
+    driver-class-name: com.mysql.cj.jdbc.Driver
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+security:
+  oauth2:
+    client:
+      id: spdata
+      client-secret: secret
+      user-authorization-uri: http://localhost:8762/oauth/authorize
+      grant-type: password
+      scope: all
+      access-token-uri: http://localhost:8762/oauth/token
+      resource:
+        userInfoUri: http://localhost:8762/user
+      authorization:
+        check-token-access: http://localhost:8762/oauth/check_token
+logging:
+  level:  # 日志级别
+    org.springframework.*: info
+server:
+  port: 8763
+  servlet:
+    path: /admin
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.spdata.entity.*
+  mapper-locations: classpath*:mapping/*.xml,classpath*:mapping/*/*.xml
+pagehelper:
+  reasonable: true
+  offset-as-page-num: true
+  row-bounds-with-count: true
+  support-methods-arguments: true
+  params: count=countSql
+  helper-dialect: mysql

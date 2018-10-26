@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spdata.crm.Menu.Dao.MenuDao">
+    <insert id="save">
+          insert into menu(name,url,icon,sort,superior)
+          value (#{menu.name},#{menu.url},#{menu.icon},#{menu.sort},#{menu.superior} )
+        </insert>
+    <update id="delect">
+        update menu set is_del=0 where id=#{menu.id} OR superior=#{menu.id}
+    </update>
+    <update id="update">
+        update menu set name=#{menu.name},url=#{menu.url},icon=#{menu.icon},sort=#{menu.sort} where id=#{menu.id}
+    </update>
+    <resultMap id="TreeMenu" type="com.spdata.entity.Menu.Menu">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="url" property="url"></result>
+        <result column="is_del" property="is_del"></result>
+        <result column="icon" property="icon"></result>
+    </resultMap>
+    <select id="TreeMenu" resultMap="TreeMenu">
+        <if test="username=='root'">
+            select * from menu where (superior is null or superior=0 ) and is_del=1
+        </if>
+        <if test="username!='root'">
+            select menu.*
+            from account
+            join account_role on (account.id = account_role.account_id and account.is_del = 1)
+            join role on (role.is_del = 1 and role.id = account_role.role_id)
+            join role_menu on (role_menu.role_id = role.id)
+            join menu on (menu.is_del = 1 and role_menu.menu_id = menu.id)
+            where account.username = #{username} and (menu.superior is null or menu.superior=0)
+        </if>
+    </select>
+    <select id="TreeChildren" resultMap="TreeMenu">
+        <if test="username!='root'">
+            select menu.*
+            from account
+            join account_role on (account.id = account_role.account_id and account.is_del = 1)
+            join role on (role.is_del = 1 and role.id = account_role.role_id)
+            join role_menu on (role_menu.role_id = role.id)
+            join menu on (menu.is_del = 1 and role_menu.menu_id = menu.id)
+            where account.username = #{username} and superior=#{id}
+        </if>
+        <if test="username=='root'">
+            select * from menu where superior=#{id} and is_del=1
+        </if>
+    </select>
+</mapper>

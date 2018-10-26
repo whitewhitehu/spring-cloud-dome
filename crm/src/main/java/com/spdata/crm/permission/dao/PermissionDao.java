@@ -1,0 +1,21 @@
+package com.spdata.crm.permission.dao;
+
+import com.spdata.entity.Base.BaseInterface;
+import com.spdata.entity.permission.permission;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+@Mapper
+public interface PermissionDao extends BaseInterface<permission> {
+    List<permission> findRolePermission(@Param(value = "username") String username);
+
+    @Override
+    boolean save(@Param(value = "permission") permission permission);
+
+    @Override
+    boolean delect(@Param(value = "permission") permission permission);
+
+    boolean update(@Param(value = "permission") permission permission);
+}

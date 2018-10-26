@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spdata.crm.Role.Dao.RoleDao">
+    <resultMap id="role" type="com.spdata.entity.Role.Role">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="create_time" property="create_time"></result>
+        <result column="is_del" property="is_del"></result>
+    </resultMap>
+    <sql id="sql">
+        id,name,create_time,is_del
+    </sql>
+    <select id="findByid" resultMap="role">
+        select
+        <include refid="sql"/>
+        from role where id=#{role.id}
+    </select>
+    <select id="findAccountRole" resultMap="role">
+          <if test="AccountName!='root'">
+              select role.*
+              from account_role join account on (account.id=account_role.account_id)
+              join role on (account_role.id = role.id)
+              where account.username=#{AccountName}
+          </if>
+          <if test="AccountName=='root'">
+              select role.*
+              from account_role join account on (account.id=account_role.account_id)
+              join role on (account_role.id = role.id)
+          </if>
+        </select>
+    <insert id="save">
+        insert into role(id,name) value (#{role.id},#{role.name})
+    </insert>
+    <update id="delect">
+        UPDATE role SET is_del=0 where id=#{role.id}
+    </update>
+    <insert id="InsertMenu">
+        insert INTO role_menu(menu_id, role_id) values
+        <foreach collection="roleInput.MenuId" item="item" separator=",">
+            (#{item},#{roleInput.RoleId})
+        </foreach>
+    </insert>
+    <insert id="InsertPermission">
+        insert into role_permission(role_id,permission_id) values
+        <foreach collection="roleInput.PermissionId" item="item" separator=",">
+            (#{item},#{roleInput.RoleId})
+        </foreach>
+    </insert>
+    <delete id="delectRoleMenu">
+        delete from role_menu where menu_id in
+        <foreach collection="roleInput.MenuId" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+        and role_id=#{roleInput.RoleId}
+    </delete>
+    <delete id="delectRolePermission">
+        delete from role_permission where permission_id in
+        <foreach collection="roleInput.PermissionId" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+        and role_id=#{roleInput.RoleId}
+    </delete>
+</mapper>

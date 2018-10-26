@@ -1,0 +1,30 @@
+server:
+  port: 8762
+
+spring:
+  application:
+    name: server-oauth2
+  datasource:
+    url: jdbc:mysql://106.12.40.123:3306/webdb?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 712yqf
+    driver-class-name: com.mysql.jdbc.Driver
+    dbcp2:
+      validation-query: select 1
+    hikari:
+      validation-timeout: 30000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true #使用ip注册
+    instance-id: ${spring.application.name}:${server.port}
+mybatis:
+  type-aliases-package: com.spdata.oauth2.*.entity,com.spdata.entity.*
+  mapper-locations: classpath*:mapping/*.xml,classpath*:mapping/*/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    org.springframework.security.*: debug

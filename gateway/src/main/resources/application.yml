@@ -1,0 +1,41 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: server-gateway
+zuul:
+  include-debug-header: true
+  routes:
+    server-oauth2:
+      serverID: server-oauth2
+      path: /oauth/**
+      strip-prefix: false
+    server-crm:
+      serverID: server-crm
+      path: /admin/**
+      sensitiveHeaders: null
+      strip-Prefix: false #strip-Prefix 携带前缀 为true则不携带
+  add-host-header: true
+  sensitive-headers: Access-Control-Allow-Origin,Access-Control-Allow-Methods
+  strip-prefix: false
+server:
+  port: 8080
+logging:
+  level:
+    org.springframework.cloud.netflix.zuul: debug
+hystrix:
+  command:
+    c4i-store:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+            ribbon:
+              ReadTimeout: 6000
+              ConnectTimeout: 6000
