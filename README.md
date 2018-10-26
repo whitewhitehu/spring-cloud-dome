@@ -1,17 +1,18 @@
 # 微服务dome
 
-### crm模块   	基本的用户,角色,菜单,权限 管理
-### eurekaserver  eureka注册中心
-### gateway  服务网关(所有的服务都通过 gateway 来访问)
+### crm模块   	基本的用户,角色,菜单,权限 管理 运行8763端口
+### eurekaserver  eureka注册中心 运行8761端口
+### gateway  服务网关(所有的服务都通过 gateway 来访问) 运行8080端口
 
-### oauth2 认证中心 使用sprig cloud oauth2 
+### oauth2 认证中心 使用sprig cloud oauth2 运行在8762端口
 
 ## 采用Restful Api 返回数据  前端代码 后续 奉上  PS:这只是一个dome 楼主只是一个大三学生 有些地方有错的话勿喷
 
 ### spring boot 版本
+		
 		<groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>2.0.4.RELEASE</version>
 
 ### 分享两个个zuul网关的注意事项 
 
