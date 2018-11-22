@@ -1,11 +1,10 @@
-package com.spdata.crm.Menu.Dao;
+package com.spdata.crm.menu.Dao;
 
 import com.spdata.entity.Base.BaseInterface;
 import com.spdata.entity.Menu.Menu;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.Collection;
 import java.util.List;
 
 @Mapper

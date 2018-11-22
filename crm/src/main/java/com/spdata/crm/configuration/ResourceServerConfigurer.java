@@ -1,8 +1,9 @@
-package com.spdata.crm.Configuration;
+package com.spdata.crm.configuration;
 
 import com.alibaba.fastjson.JSON;
 import com.spdata.entity.Base.BaseResul;
 import com.spdata.entity.Base.Basemessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.OAuth2ClientProperties;
@@ -31,7 +32,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Slf4j
 @Configuration
 @ComponentScan(basePackages = "com.spdata")
 @EnableResourceServer

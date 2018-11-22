@@ -1,15 +1,12 @@
-package com.spdata.crm.Menu.Service;
+package com.spdata.crm.menu.Service;
 
-import com.mysql.cj.util.StringUtils;
-import com.spdata.crm.Menu.Dao.MenuDao;
+import com.spdata.crm.menu.Dao.MenuDao;
 import com.spdata.crm.tool.SecurityTool;
 import com.spdata.entity.Base.BaseService;
 import com.spdata.entity.Menu.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Service

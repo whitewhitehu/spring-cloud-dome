@@ -1,7 +1,7 @@
-package com.spdata.crm.Role.Controller;
+package com.spdata.crm.role.Controller;
 
-import com.spdata.crm.Role.Service.RoleService;
-import com.spdata.crm.Role.input.RoleInput;
+import com.spdata.crm.role.Service.RoleService;
+import com.spdata.crm.role.input.RoleInput;
 import com.spdata.entity.Base.BaseResul;
 import com.spdata.entity.Base.Basemessage;
 import com.spdata.entity.Role.Role;
@@ -66,7 +66,7 @@ public class RoleController {
      * @return
      */
     @PostMapping(value = "/InsertMenu")
-    public BaseResul InsertMenu(@RequestBody RoleInput roleInput) {
+    public BaseResul insertMenu(@RequestBody RoleInput roleInput) {
         BaseResul resul = new BaseResul();
         try {
             boolean ifInsert = roleService.InsertMenu(roleInput);
@@ -86,7 +86,7 @@ public class RoleController {
      * @return
      */
     @PostMapping(value = "/InsertPermission")
-    public BaseResul InsertPermission(@RequestBody RoleInput roleInput) {
+    public BaseResul insertPermission(@RequestBody RoleInput roleInput) {
         BaseResul resul = new BaseResul();
         try {
             boolean ifInsert = roleService.InsertPermission(roleInput);

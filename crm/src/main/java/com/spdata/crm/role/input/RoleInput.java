@@ -1,4 +1,4 @@
-package com.spdata.crm.Role.input;
+package com.spdata.crm.role.input;
 
 import lombok.Getter;
 import lombok.Setter;

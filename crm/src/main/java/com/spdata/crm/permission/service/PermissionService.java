@@ -21,4 +21,8 @@ public class PermissionService extends BaseService<PermissionDao, permission> {
     public boolean update(permission permission) {
         return permissionDao.update(permission);
     }
+
+    public List<permission> findAccountIdPermission(Integer accountid) {
+        return permissionDao.findAccountIdPermission(accountid);
+    }
 }

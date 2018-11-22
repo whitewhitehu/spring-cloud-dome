@@ -7,7 +7,7 @@ spring:
   datasource:
     url: jdbc:mysql://DatabaseUrl:3306/webdb?serverTimezone=GMT%2B8&useSSL=false
     username: root
-    password: root
+    password: 712yqf
     driver-class-name: com.mysql.jdbc.Driver
     dbcp2:
       validation-query: select 1

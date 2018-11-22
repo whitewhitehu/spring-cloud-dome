@@ -1,22 +1,17 @@
-package com.spdata.crm.Account.Controller;
+package com.spdata.crm.account.Controller;
 
 import com.github.pagehelper.PageInfo;
-import com.spdata.crm.Account.Service.AccountService;
-import com.spdata.crm.Role.Service.RoleService;
-import com.spdata.crm.tool.SecurityTool;
+import com.spdata.crm.account.Service.AccountService;
+import com.spdata.crm.role.Service.RoleService;
 import com.spdata.entity.Account.Account;
 import com.spdata.entity.Base.BaseResul;
 import com.spdata.entity.Base.Basemessage;
 import com.spdata.entity.Base.PageParameter;
 import com.spdata.entity.Role.Role;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
 import java.security.Principal;
 import java.util.List;
 

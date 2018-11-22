@@ -1,13 +1,10 @@
-package com.spdata.crm.Account.Dao;
+package com.spdata.crm.account.Dao;
 
 import com.spdata.entity.Account.Account;
 import com.spdata.entity.Base.BaseInterface;
 import com.spdata.entity.Role.Role;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.security.core.parameters.P;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

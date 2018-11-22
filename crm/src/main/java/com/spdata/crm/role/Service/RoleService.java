@@ -1,7 +1,7 @@
-package com.spdata.crm.Role.Service;
+package com.spdata.crm.role.Service;
 
-import com.spdata.crm.Role.Dao.RoleDao;
-import com.spdata.crm.Role.input.RoleInput;
+import com.spdata.crm.role.Dao.RoleDao;
+import com.spdata.crm.role.input.RoleInput;
 import com.spdata.crm.tool.SecurityTool;
 import com.spdata.entity.Base.BaseService;
 import com.spdata.entity.Role.Role;

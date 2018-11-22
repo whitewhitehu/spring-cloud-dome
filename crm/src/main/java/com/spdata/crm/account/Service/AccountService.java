@@ -1,12 +1,8 @@
-package com.spdata.crm.Account.Service;
+package com.spdata.crm.account.Service;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.spdata.crm.Account.Dao.AccountDao;
+import com.spdata.crm.account.Dao.AccountDao;
 import com.spdata.entity.Account.Account;
 import com.spdata.entity.Base.BaseService;
-import com.spdata.entity.Base.PageParameter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +20,7 @@ public class AccountService extends BaseService<AccountDao, Account> {
      * @param account
      * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public boolean updatePassword(Account account) {
         return accountDao.updatePassword(account);
     }
@@ -45,7 +41,7 @@ public class AccountService extends BaseService<AccountDao, Account> {
      * @param entity
      * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public boolean save(Account entity) {
         try {
@@ -61,12 +57,12 @@ public class AccountService extends BaseService<AccountDao, Account> {
     /**
      * 修改头像
      *
-     * @param Avatar:头像
-     * @param UserName:账户名
+     * @param avatar:头像
+     * @param username:账户名
      * @return
      */
-    @Transactional
-    public boolean UpdateAvatar(String Avatar, String UserName) {
-        return accountDao.UpdateAvatar(Avatar, UserName);
+    @Transactional(rollbackFor = Exception.class)
+    public boolean updateAvatar(String avatar, String username) {
+        return accountDao.UpdateAvatar(avatar, username);
     }
 }

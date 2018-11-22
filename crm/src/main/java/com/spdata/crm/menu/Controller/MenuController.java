@@ -1,16 +1,13 @@
-package com.spdata.crm.Menu.Controller;
+package com.spdata.crm.menu.Controller;
 
-import com.spdata.crm.Menu.Service.MenuService;
-import com.spdata.crm.Role.Service.RoleService;
+import com.spdata.crm.menu.Service.MenuService;
+import com.spdata.crm.role.Service.RoleService;
 import com.spdata.entity.Base.BaseResul;
 import com.spdata.entity.Base.Basemessage;
 import com.spdata.entity.Menu.Menu;
 import com.spdata.entity.Role.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
-package com.spdata.crm.Role.Dao;
+package com.spdata.crm.role.Dao;
 
-import com.spdata.crm.Role.input.RoleInput;
+import com.spdata.crm.role.input.RoleInput;
 import com.spdata.entity.Base.BaseInterface;
 import com.spdata.entity.Role.Role;
 import org.apache.ibatis.annotations.Mapper;

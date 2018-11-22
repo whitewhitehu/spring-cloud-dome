@@ -32,6 +32,21 @@ public class PermissionController {
         return resul;
     }
 
+    @PostMapping(value = "/accountPermission")
+    public BaseResul AccountIdPermission(@RequestBody Integer id) {
+        BaseResul resul = new BaseResul();
+        try {
+            List<permission> permissions = permissionService.findAccountIdPermission(id);
+            resul.setData(permissions);
+        } catch (Exception e) {
+            log.warn(e.getMessage());
+            resul.setCode(Basemessage.error);
+            resul.setMessage(Basemessage.error_message + e.getMessage());
+        }
+        return resul;
+    }
+
+
     @PostMapping(value = "/save")
     public BaseResul save(@RequestBody permission permission) {
         BaseResul resul = new BaseResul();
