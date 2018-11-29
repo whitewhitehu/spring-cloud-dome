@@ -17,7 +17,7 @@
                join account on (account.id = account_role.account_id and account.is_del = 1)
                join role_permission on (role.id = role_permission.role_id)
                join permission on (permission.id = role_permission.permission_id and permission.is_del = 1)
-        where account.username = #{id}
+        where account.id = #{id}
     </select>
     <insert id="save">
         insert into permission(name, "value") value (#{permission.name},#{permission.value})

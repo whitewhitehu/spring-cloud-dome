@@ -2,14 +2,15 @@ package com.spdata.oauth2.Configurer.Converter;
 
 
 import com.spdata.oauth2.Account.entity.Account;
+import jdk.internal.dynalink.linker.LinkerServices;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class SpDataTokenEnhancer implements TokenEnhancer {
@@ -20,7 +21,12 @@ public class SpDataTokenEnhancer implements TokenEnhancer {
         Map<String, Object> addresul = new HashMap<>();
         Account account = (Account) oAuth2Authentication.getPrincipal();
         addresul.put("code", 2000);
-        addresul.put("Permission", oAuth2Authentication.getAuthorities());
+        Collection<GrantedAuthority> grantedAuthorities = oAuth2Authentication.getAuthorities();
+        List<String> Permission = new ArrayList<>();
+        grantedAuthorities.forEach(item -> {
+            Permission.add(item.getAuthority());
+        });
+        addresul.put("Permission", Permission);
         defaultOAuth2AccessToken.setAdditionalInformation(addresul);
         return defaultOAuth2AccessToken;
     }

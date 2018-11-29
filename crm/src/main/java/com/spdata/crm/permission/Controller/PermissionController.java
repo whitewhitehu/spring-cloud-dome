@@ -18,6 +18,11 @@ public class PermissionController {
     @Autowired
     private PermissionService permissionService;
 
+    /**
+     * 获取当前用户权限
+     *
+     * @return
+     */
     @GetMapping(value = "/get")
     public BaseResul Get() {
         BaseResul resul = new BaseResul();
@@ -32,8 +37,14 @@ public class PermissionController {
         return resul;
     }
 
+    /**
+     * 获取指定用户权限
+     *
+     * @param id 用户ID
+     * @return
+     */
     @PostMapping(value = "/accountPermission")
-    public BaseResul AccountIdPermission(@RequestBody Integer id) {
+    public BaseResul AccountIdPermission(@RequestParam Integer id) {
         BaseResul resul = new BaseResul();
         try {
             List<permission> permissions = permissionService.findAccountIdPermission(id);
@@ -46,7 +57,12 @@ public class PermissionController {
         return resul;
     }
 
-
+    /**
+     * 添加权限
+     *
+     * @param permission 权限对象
+     * @return
+     */
     @PostMapping(value = "/save")
     public BaseResul save(@RequestBody permission permission) {
         BaseResul resul = new BaseResul();
@@ -61,6 +77,12 @@ public class PermissionController {
         return resul;
     }
 
+    /**
+     * 删除权限
+     *
+     * @param permission
+     * @return
+     */
     @PostMapping(value = "/delect")
     public BaseResul delect(@RequestBody permission permission) {
         BaseResul resul = new BaseResul();

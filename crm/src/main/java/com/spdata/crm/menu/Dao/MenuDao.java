@@ -4,10 +4,12 @@ import com.spdata.entity.Base.BaseInterface;
 import com.spdata.entity.Menu.Menu;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Mapper
+@Component
 public interface MenuDao extends BaseInterface<Menu> {
     @Override
     boolean save(@Param("menu") Menu menu);

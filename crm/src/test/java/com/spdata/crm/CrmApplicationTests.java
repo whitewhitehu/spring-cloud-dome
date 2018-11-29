@@ -26,7 +26,7 @@ public class CrmApplicationTests {
 
     @Test
     public void contextLoads() {
-
+       Object men= menuService.TreeMenu();
     }
 
 }

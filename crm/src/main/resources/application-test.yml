@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: server-crm
+  datasource:
+    url: jdbc:mysql://DatabaseUrl:3306/webdb?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 712yqf
+    driver-class-name: com.mysql.cj.jdbc.Driver
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+security:
+  oauth2:
+    client:
+      id: spdata
+      client-secret: secret
+      user-authorization-uri: http://localhost:8762/oauth/authorize
+      grant-type: password
+      scope: all
+      access-token-uri: http://localhost:8762/oauth/token
+      resource:
+        userInfoUri: http://localhost:8762/user
+      authorization:
+        check-token-access: http://localhost:8762/oauth/check_token

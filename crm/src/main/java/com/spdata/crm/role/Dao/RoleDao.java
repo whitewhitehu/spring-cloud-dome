@@ -5,10 +5,12 @@ import com.spdata.entity.Base.BaseInterface;
 import com.spdata.entity.Role.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Mapper
+@Component
 public interface RoleDao extends BaseInterface<Role> {
     List<Role> findAccountRole(@Param("AccountName") String AccountName);
 
