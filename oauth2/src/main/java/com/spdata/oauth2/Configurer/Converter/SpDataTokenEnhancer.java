@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+/**
+ * token 增强器  可以自定义登陆成功是返回的数据格式
+ */
 @Component
 public class SpDataTokenEnhancer implements TokenEnhancer {
 
@@ -22,11 +25,11 @@ public class SpDataTokenEnhancer implements TokenEnhancer {
         Account account = (Account) oAuth2Authentication.getPrincipal();
         addresul.put("code", 2000);
         Collection<GrantedAuthority> grantedAuthorities = oAuth2Authentication.getAuthorities();
-        List<String> Permission = new ArrayList<>();
+        List<String> permission = new ArrayList<>();
         grantedAuthorities.forEach(item -> {
-            Permission.add(item.getAuthority());
+            permission.add(item.getAuthority());
         });
-        addresul.put("Permission", Permission);
+        addresul.put("Permission", permission);
         defaultOAuth2AccessToken.setAdditionalInformation(addresul);
         return defaultOAuth2AccessToken;
     }

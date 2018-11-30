@@ -33,6 +33,9 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = {"com.spdata"})
 @EnableAuthorizationServer
 public class AuthorizationServerConfigurer extends AuthorizationServerConfigurerAdapter {
+    /**
+     * 注入认证管理器
+     */
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -82,6 +85,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()")
+                //检查token接口 全部人可以访问
                 .checkTokenAccess("permitAll()")
                 .allowFormAuthenticationForClients();
     }

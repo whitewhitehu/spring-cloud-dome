@@ -23,7 +23,7 @@ zuul:
   sensitive-headers: Access-Control-Allow-Origin,Access-Control-Allow-Methods
   strip-prefix: false
 server:
-  port: 8080
+  port: 80
 logging:
   level:
     org.springframework.cloud.netflix.zuul: debug

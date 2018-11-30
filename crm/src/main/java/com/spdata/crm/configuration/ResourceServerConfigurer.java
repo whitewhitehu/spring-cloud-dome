@@ -59,6 +59,10 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
         return converter;
     }
 
+    /**
+     * 这个暂时没用 配置还要研究一下
+     * @return
+     */
     @Bean
     @ConfigurationProperties(prefix = "security.oauth2.client")
     public ClientCredentialsResourceDetails clientCredentialsResourceDetails() {
@@ -73,8 +77,11 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     @Bean
     public ResourceServerTokenServices tokenServices() {
         RemoteTokenServices tokenServices = new RemoteTokenServices();
+        //检查TOKEN的URL
         tokenServices.setCheckTokenEndpointUrl(CheckTokenAccessURL);
+        //客户端ID
         tokenServices.setClientId(ClientID);
+        //客户端密钥
         tokenServices.setClientSecret(ClientSecret);
         return tokenServices;
     }
@@ -83,6 +90,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.tokenServices(tokenServices());
         resources.authenticationEntryPoint(new AuthenticationEntryPoint() {
+            // token 无效时进行的处理
             @Override
             public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
                 BaseResul baseResul = new BaseResul();
@@ -95,6 +103,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
                 httpServletResponse.getWriter().write(JSON.toJSONString(baseResul));
             }
         }).accessDeniedHandler(new AccessDeniedHandler() {
+            // 访问被拒绝时 对返回的数据进行定义 PS: 这应该时权限不足时进行的处理
             @Override
             public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
                 BaseResul baseResul = new BaseResul();
@@ -109,6 +118,11 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
         });
     }
 
+    /**
+     * 不拦截的请求列表
+     *
+     * @return
+     */
     public String[] permitAll() {
         List<String> stringList = new ArrayList<>();
         stringList.add("/admin/webjars/**");
