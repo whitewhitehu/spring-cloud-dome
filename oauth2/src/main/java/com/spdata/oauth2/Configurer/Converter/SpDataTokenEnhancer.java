@@ -24,12 +24,12 @@ public class SpDataTokenEnhancer implements TokenEnhancer {
         Map<String, Object> addresul = new HashMap<>();
         Account account = (Account) oAuth2Authentication.getPrincipal();
         addresul.put("code", 2000);
-        Collection<GrantedAuthority> grantedAuthorities = oAuth2Authentication.getAuthorities();
-        List<String> permission = new ArrayList<>();
-        grantedAuthorities.forEach(item -> {
-            permission.add(item.getAuthority());
-        });
-        addresul.put("Permission", permission);
+//        Collection<GrantedAuthority> grantedAuthorities = oAuth2Authentication.getAuthorities();
+//        List<String> permission = new ArrayList<>();
+//        grantedAuthorities.forEach(item -> {
+//            permission.add(item.getAuthority());
+//        });
+//        addresul.put("Permission", permission);
         defaultOAuth2AccessToken.setAdditionalInformation(addresul);
         return defaultOAuth2AccessToken;
     }

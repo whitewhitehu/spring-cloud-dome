@@ -1,5 +1,7 @@
 package com.spdata.crm.account.Controller;
 
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.github.pagehelper.PageInfo;
 import com.spdata.crm.account.Service.AccountService;
 import com.spdata.crm.role.Service.RoleService;
@@ -10,10 +12,15 @@ import com.spdata.entity.Base.PageParameter;
 import com.spdata.entity.Role.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 
 @Slf4j
@@ -139,8 +146,16 @@ public class AccountController {
         BaseResul resul = new BaseResul();
         try {
             Account account = accountService.findAccount(user.getName());
-            account.setPassword("***********");
-            resul.setData(account);
+            String json = JSON.toJSONString(account);
+            Map jsonmap = (Map) JSON.parse(json);
+            OAuth2Authentication auth2Authentication = (OAuth2Authentication) user;
+            List<? extends GrantedAuthority> collection = (List<? extends GrantedAuthority>) auth2Authentication.getUserAuthentication().getAuthorities();
+            List<String> permissions = new ArrayList<>();
+            collection.forEach(item -> {
+                permissions.add(item.getAuthority());
+            });
+            jsonmap.put("permission", permissions);
+            resul.setData(jsonmap);
         } catch (Exception e) {
             log.warn(e.getMessage());
             resul.setCode(Basemessage.error);
