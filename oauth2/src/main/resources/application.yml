@@ -8,7 +8,7 @@ spring:
     url: jdbc:mysql://DatabaseUrl:3306/webdb?serverTimezone=GMT%2B8&useSSL=false
     username: root
     password: 712yqf
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     dbcp2:
       validation-query: select 1
     hikari:
@@ -28,3 +28,7 @@ mybatis:
 logging:
   level:
     org.springframework.security.*: debug
+security:
+  oauth2:
+    resource:
+      filter-order: 3
