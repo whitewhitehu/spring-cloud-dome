@@ -9,7 +9,7 @@
         update menu set is_del=1 where id=#{menu.id} OR superior=#{menu.id}
     </update>
     <update id="update">
-        update menu set name=#{menu.name},url=#{menu.url},icon=#{menu.icon},sort=#{menu.sort},component=#{menu.component}
+        update menu set name=#{menu.name},url=#{menu.url},icon=#{menu.icon},sort=#{menu.sort},component=#{menu.component},render=#{menu.render}
          where id=#{menu.id}
     </update>
     <resultMap id="TreeMenu" type="com.spdata.entity.Menu.Menu">
