@@ -55,11 +55,6 @@ public class MenuController {
     public BaseResul menu() {
         BaseResul resul = new BaseResul();
         try {
-            List<Role> roles = roleService.findAccountRole();
-            List<Integer> roleid = new ArrayList<>();
-            roles.forEach(item -> {
-                roleid.add(item.getId());
-            });
             List<Menu> menus = menuService.TreeMenu();
             resul.setData(menus);
         } catch (Exception e) {

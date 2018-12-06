@@ -13,6 +13,9 @@ spring:
       validation-query: select 1
     hikari:
       validation-timeout: 30000
+  security:
+    filter:
+      order: 3
 eureka:
   client:
     serviceUrl:
@@ -28,7 +31,3 @@ mybatis:
 logging:
   level:
     org.springframework.security.*: debug
-security:
-  oauth2:
-    resource:
-      filter-order: 3

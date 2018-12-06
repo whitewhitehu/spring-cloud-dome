@@ -64,12 +64,11 @@ public class WEBSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().usernameParameter("username").passwordParameter("password");
+        http.authorizeRequests().anyRequest().authenticated();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.csrf().disable();
         http.httpBasic().disable();
-        http.authorizeRequests().antMatchers("/actuator/**","/oauth/token/logout").permitAll();
-        super.configure(http);
+        http.authorizeRequests().antMatchers("/actuator/**", "/oauth/token/logout").permitAll();
     }
 }
 

@@ -1,4 +1,4 @@
-package com.spdata.oauth2;
+package com.spdata.oauth2.Account.Controller;
 
 import com.spdata.entity.Base.BaseResul;
 import lombok.extern.java.Log;
@@ -30,9 +30,10 @@ public class RemoveTokenEndpoint {
         try {
             boolean ifRemove = tokenServices.revokeToken(access_token);
             resul.setData(ifRemove);
+            resul.setMessage("注销成功!");
         } catch (Exception e) {
             log.warning(e.getMessage());
-
+            resul.setMessage("注销失败!");
         }
         return resul;
     }

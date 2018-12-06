@@ -61,6 +61,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
 
     /**
      * 这个暂时没用 配置还要研究一下
+     *
      * @return
      */
     @Bean

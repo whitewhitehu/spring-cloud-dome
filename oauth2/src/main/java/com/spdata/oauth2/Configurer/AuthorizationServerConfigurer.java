@@ -44,9 +44,11 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     private AuthenticationManager authenticationManager;
     @Autowired
     private DataSource dataSource;
+    /**
+     * 注入token增强器
+     */
     @Autowired
-    private AccountService accountService;
-
+    private SpDataTokenEnhancer spDataTokenEnhancer;
     /**
      * token保存在数据库中
      *
@@ -72,14 +74,11 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     public DefaultTokenServices tokenServices() {
         DefaultTokenServices tokenServices = new DefaultTokenServices();
         tokenServices.setTokenStore(InMemorytokenStore());
+        tokenServices.setTokenEnhancer(spDataTokenEnhancer);
         return tokenServices;
     }
 
-    /**
-     * 注入token增强器
-     */
-    @Autowired
-    private SpDataTokenEnhancer spDataTokenEnhancer;
+
 
     /**
      * json web token
@@ -126,7 +125,6 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-                .tokenEnhancer(spDataTokenEnhancer)
                 .tokenServices(tokenServices())
                 .exceptionTranslator(new DefaultWebResponseExceptionTranslator() {
                     @Override
