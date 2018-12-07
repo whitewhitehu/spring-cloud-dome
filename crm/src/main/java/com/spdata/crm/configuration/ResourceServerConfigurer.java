@@ -47,6 +47,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     @Autowired
     OAuth2ClientProperties oAuth2ClientProperties;
 
+
     /**
      * JSON WEB TOKEN 服务  设置密钥
      *

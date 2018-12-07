@@ -23,7 +23,13 @@ public class RemoveTokenEndpoint {
     @Autowired
     private DefaultTokenServices tokenServices;
 
-    @RequestMapping(value = "/oauth/token/logout", method = RequestMethod.DELETE)
+    /**
+     * 注销接口
+     *
+     * @param access_token
+     * @return
+     */
+    @RequestMapping(value = "/oauth/token", method = RequestMethod.DELETE)
     @ResponseBody
     public BaseResul logout(@RequestParam(value = "access_token") String access_token) {
         BaseResul resul = new BaseResul();

@@ -49,6 +49,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
      */
     @Autowired
     private SpDataTokenEnhancer spDataTokenEnhancer;
+
     /**
      * token保存在数据库中
      *
@@ -75,9 +76,9 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
         DefaultTokenServices tokenServices = new DefaultTokenServices();
         tokenServices.setTokenStore(InMemorytokenStore());
         tokenServices.setTokenEnhancer(spDataTokenEnhancer);
+        tokenServices.setAuthenticationManager(authenticationManager);
         return tokenServices;
     }
-
 
 
     /**
@@ -111,7 +112,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
         clients.inMemory() // 使用in-memory存储
                 .withClient("spdata") // client_id
                 .secret("secret") // client_secret
-                .authorizedGrantTypes( "password", "refresh_token") // 该client允许的授权类型
+                .authorizedGrantTypes("password", "refresh_token") // 该client允许的授权类型
                 .scopes("all"); // 允许的授权范围
     }
 
