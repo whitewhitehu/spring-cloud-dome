@@ -30,7 +30,7 @@
         </if>
     </select>
     <insert id="save">
-        insert into role(id,name) value (#{role.id},#{role.name})
+        insert into role(name) value (#{role.name})
     </insert>
     <update id="delect">
         UPDATE role SET is_del=1 where id=#{role.id}

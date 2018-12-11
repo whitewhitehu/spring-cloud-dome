@@ -12,6 +12,7 @@ import com.spdata.entity.Base.PageParameter;
 import com.spdata.entity.Role.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,7 @@ public class AccountController {
      * @return
      */
     @GetMapping(value = "/get/{id}")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul get(@PathVariable(value = "id") Integer id) {
         BaseResul resul = new BaseResul();
         try {
@@ -62,6 +64,7 @@ public class AccountController {
      * @return
      */
     @PostMapping(value = "/save")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul save(@RequestBody Account account) {
         BaseResul resul = new BaseResul();
         try {
@@ -82,6 +85,7 @@ public class AccountController {
      * @return
      */
     @PostMapping(value = "/delect")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul delect(Account account) {
         BaseResul resul = new BaseResul();
         try {
@@ -102,6 +106,7 @@ public class AccountController {
      * @return
      */
     @PostMapping(value = "/page")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul Page(PageParameter<Account> accountPageParameter) {
         BaseResul resul = new BaseResul();
         try {

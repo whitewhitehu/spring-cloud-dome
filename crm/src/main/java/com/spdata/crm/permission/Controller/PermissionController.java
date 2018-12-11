@@ -6,6 +6,7 @@ import com.spdata.entity.Base.Basemessage;
 import com.spdata.entity.permission.permission;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,6 +45,7 @@ public class PermissionController {
      * @return
      */
     @PostMapping(value = "/RoleIdPermission")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul RoleIdPermission(@RequestParam Integer id) {
         BaseResul resul = new BaseResul();
         try {
@@ -64,6 +66,7 @@ public class PermissionController {
      * @return
      */
     @PostMapping(value = "/save")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul save(@RequestBody permission permission) {
         BaseResul resul = new BaseResul();
         try {
@@ -84,6 +87,7 @@ public class PermissionController {
      * @return
      */
     @PostMapping(value = "/delect")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul delect(@RequestBody permission permission) {
         BaseResul resul = new BaseResul();
         try {
@@ -98,6 +102,7 @@ public class PermissionController {
     }
 
     @PostMapping(value = "/update")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul update(@RequestBody permission permission) {
         BaseResul resul = new BaseResul();
         try {

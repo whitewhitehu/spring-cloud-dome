@@ -8,6 +8,7 @@ import com.spdata.entity.Menu.Menu;
 import com.spdata.entity.Role.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,7 @@ public class MenuController {
      * @return
      */
     @PostMapping(value = "/save")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul save(@RequestBody Menu menu) {
         BaseResul resul = new BaseResul();
         try {
@@ -72,6 +74,7 @@ public class MenuController {
      * @return
      */
     @PostMapping(value = "/delect")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul delect(@RequestBody Menu menu) {
         BaseResul resul = new BaseResul();
         try {
@@ -86,6 +89,7 @@ public class MenuController {
     }
 
     @PostMapping(value = "/update")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul Update(@RequestBody Menu menu) {
         BaseResul resul = new BaseResul();
         try {

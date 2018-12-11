@@ -4,10 +4,10 @@ import com.spdata.crm.role.Service.RoleService;
 import com.spdata.crm.role.input.RoleInput;
 import com.spdata.entity.Base.BaseResul;
 import com.spdata.entity.Base.Basemessage;
-import com.spdata.entity.Menu.Menu;
 import com.spdata.entity.Role.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +27,7 @@ public class RoleController {
      * @return
      */
     @PostMapping(value = "/save")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul save(@RequestBody Role role) {
         BaseResul resul = new BaseResul();
         try {
@@ -47,6 +48,7 @@ public class RoleController {
      * @return
      */
     @PostMapping(value = "/delect")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul delect(@RequestBody Role role) {
         BaseResul resul = new BaseResul();
         try {
@@ -81,6 +83,7 @@ public class RoleController {
      * @return
      */
     @PostMapping(value = "/UpdateMenu")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul insertMenu(@RequestBody RoleInput roleInput) {
         BaseResul resul = new BaseResul();
         try {
@@ -101,50 +104,11 @@ public class RoleController {
      * @return
      */
     @PostMapping(value = "/UpdatePermission")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul insertPermission(@RequestBody RoleInput roleInput) {
         BaseResul resul = new BaseResul();
         try {
             boolean ifInsert = roleService.InsertPermission(roleInput);
-            resul.setData(ifInsert);
-        } catch (Exception e) {
-            log.warn(e.getMessage());
-            resul.setCode(Basemessage.error);
-            resul.setMessage(Basemessage.error_message + e.getMessage());
-        }
-        return resul;
-    }
-
-    /**
-     * 删除角色对应菜单===>接口 废弃
-     *
-     * @param roleInput
-     * @return
-     */
-    @PostMapping(value = "/delectRoleMenu")
-    public BaseResul delectRoleMenu(@RequestBody RoleInput roleInput) {
-        BaseResul resul = new BaseResul();
-        try {
-            boolean ifInsert = roleService.delectRoleMenu(roleInput);
-            resul.setData(ifInsert);
-        } catch (Exception e) {
-            log.warn(e.getMessage());
-            resul.setCode(Basemessage.error);
-            resul.setMessage(Basemessage.error_message + e.getMessage());
-        }
-        return resul;
-    }
-
-    /**
-     * 删除角色对应权限===>接口 废弃
-     *
-     * @param roleInput
-     * @return
-     */
-    @PostMapping(value = "/delectRolePermission")
-    public BaseResul delectRolePermission(@RequestBody RoleInput roleInput) {
-        BaseResul resul = new BaseResul();
-        try {
-            boolean ifInsert = roleService.delectRolePermission(roleInput);
             resul.setData(ifInsert);
         } catch (Exception e) {
             log.warn(e.getMessage());
@@ -161,6 +125,7 @@ public class RoleController {
      * @return
      */
     @PostMapping(value = "/rolemenu")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public BaseResul rolemenu(@RequestParam(value = "id") Integer id) {
         BaseResul resul = new BaseResul();
         try {
