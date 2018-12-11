@@ -4,6 +4,7 @@ import com.spdata.crm.role.Dao.RoleDao;
 import com.spdata.crm.role.input.RoleInput;
 import com.spdata.crm.tool.SecurityTool;
 import com.spdata.entity.Base.BaseService;
+import com.spdata.entity.Menu.Menu;
 import com.spdata.entity.Role.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class RoleService extends BaseService<RoleDao, Role> {
      * @param roleInput
      * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public boolean InsertMenu(RoleInput roleInput) {
         return roleDao.InsertMenu(roleInput);
     }
@@ -68,4 +69,9 @@ public class RoleService extends BaseService<RoleDao, Role> {
     public boolean delectRolePermission(RoleInput roleInput) {
         return roleDao.delectRolePermission(roleInput);
     }
+
+    public List<Integer> findRoleMenu(Integer roleid) {
+        return roleDao.findRoleMenu(roleid);
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.spdata.crm.configuration;
 
 import com.alibaba.fastjson.JSON;
+import com.spdata.crm.configuration.entrypoint.SpdataAuthenticationEntryPoint;
+import com.spdata.crm.configuration.handler.SpdataAccessDeniedHandler;
 import com.spdata.entity.Base.BaseResul;
 import com.spdata.entity.Base.Basemessage;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +21,10 @@ import org.springframework.security.oauth2.client.token.grant.client.ClientCrede
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -46,7 +50,10 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     private String CheckTokenAccessURL;
     @Autowired
     OAuth2ClientProperties oAuth2ClientProperties;
-
+    @Autowired
+    private SpdataAccessDeniedHandler accessDeniedHandler;
+    @Autowired
+    private SpdataAuthenticationEntryPoint authenticationEntryPoint;
 
     /**
      * JSON WEB TOKEN 服务  设置密钥
@@ -77,7 +84,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
      * @return
      */
     @Bean
-    public ResourceServerTokenServices tokenServices() {
+    public ResourceServerTokenServices resourceTokenServices() {
         RemoteTokenServices tokenServices = new RemoteTokenServices();
         //检查TOKEN的URL
         tokenServices.setCheckTokenEndpointUrl(CheckTokenAccessURL);
@@ -88,36 +95,25 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
         return tokenServices;
     }
 
+    /**
+     * 默认的token服务 使用该TokenServices记得设置tokenstore 和OAUTH2认证服务设置的tokenstore一样.
+     * tokenstore可以使用 redis,JDBC
+     * 如果OAUTH2认证服务使用内存存储token 客户端最好使用远程token服务
+     *
+     * @return
+     */
+    public DefaultTokenServices defaultTokenServices() {
+        DefaultTokenServices tokenServices = new DefaultTokenServices();
+        tokenServices.setTokenStore(new InMemoryTokenStore());
+        return tokenServices;
+    }
+
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        resources.tokenServices(tokenServices());
-        resources.authenticationEntryPoint(new AuthenticationEntryPoint() {
-            // token 无效时进行的处理
-            @Override
-            public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-                BaseResul baseResul = new BaseResul();
-                baseResul.setCode(Basemessage.ParameterError);
-                baseResul.setMessage("无效token:" + e.getLocalizedMessage());
-                baseResul.setData(null);
-                httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                httpServletResponse.setContentType("application/json");
-                httpServletResponse.setCharacterEncoding("UTF-8");
-                httpServletResponse.getWriter().write(JSON.toJSONString(baseResul));
-            }
-        }).accessDeniedHandler(new AccessDeniedHandler() {
-            // 访问被拒绝时 对返回的数据进行定义 PS: 这应该时权限不足时进行的处理
-            @Override
-            public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
-                BaseResul baseResul = new BaseResul();
-                baseResul.setMessage(e.getLocalizedMessage());
-                baseResul.setCode(Basemessage.Refuse);
-                baseResul.setData(null);
-                httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                httpServletResponse.setContentType("application/json");
-                httpServletResponse.setCharacterEncoding("UTF-8");
-                httpServletResponse.getWriter().write(JSON.toJSONString(baseResul));
-            }
-        });
+        resources
+                .tokenServices(resourceTokenServices())
+                .authenticationEntryPoint(authenticationEntryPoint)
+                .accessDeniedHandler(accessDeniedHandler);
     }
 
     /**

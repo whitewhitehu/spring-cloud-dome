@@ -38,16 +38,16 @@ public class PermissionController {
     }
 
     /**
-     * 获取指定用户权限
+     * 通过角色ID查询角色权限
      *
-     * @param id 用户ID
+     * @param id
      * @return
      */
-    @PostMapping(value = "/accountPermission")
-    public BaseResul AccountIdPermission(@RequestParam Integer id) {
+    @PostMapping(value = "/RoleIdPermission")
+    public BaseResul RoleIdPermission(@RequestParam Integer id) {
         BaseResul resul = new BaseResul();
         try {
-            List<permission> permissions = permissionService.findAccountIdPermission(id);
+            List<permission> permissions = permissionService.findRoleIdPermission(id);
             resul.setData(permissions);
         } catch (Exception e) {
             log.warn(e.getMessage());

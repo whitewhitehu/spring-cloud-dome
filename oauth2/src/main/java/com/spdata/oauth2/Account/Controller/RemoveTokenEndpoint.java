@@ -35,6 +35,9 @@ public class RemoveTokenEndpoint {
         BaseResul resul = new BaseResul();
         try {
             boolean ifRemove = tokenServices.revokeToken(access_token);
+            if (ifRemove) {
+                throw new Exception("注销失败");
+            }
             resul.setData(ifRemove);
             resul.setMessage("注销成功!");
         } catch (Exception e) {

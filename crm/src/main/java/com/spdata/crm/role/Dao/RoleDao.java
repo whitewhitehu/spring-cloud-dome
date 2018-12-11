@@ -2,7 +2,9 @@ package com.spdata.crm.role.Dao;
 
 import com.spdata.crm.role.input.RoleInput;
 import com.spdata.entity.Base.BaseInterface;
+import com.spdata.entity.Menu.Menu;
 import com.spdata.entity.Role.Role;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -30,5 +32,7 @@ public interface RoleDao extends BaseInterface<Role> {
 
     @Override
     Role findByid(@Param(value = "role") Role role);
+
+    List<Integer> findRoleMenu(@Param(value = "roleid") Integer roleid);
 
 }

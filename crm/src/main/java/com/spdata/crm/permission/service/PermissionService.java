@@ -22,7 +22,7 @@ public class PermissionService extends BaseService<PermissionDao, permission> {
         return permissionDao.update(permission);
     }
 
-    public List<permission> findAccountIdPermission(Integer accountid) {
-        return permissionDao.findAccountIdPermission(accountid);
+    public List<permission> findRoleIdPermission(Integer accountid) {
+        return permissionDao.findRoleIdPermission(accountid);
     }
 }

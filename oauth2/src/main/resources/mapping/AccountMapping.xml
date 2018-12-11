@@ -34,10 +34,10 @@
                pmn.value as "pmn_value",
                pmn.is_del as "pmn_is_del"
         from account ac
-               join account_role ar on (ac.id = ar.account_id and ac.is_del = 1)
+               join account_role ar on (ac.id = ar.account_id and ac.is_del = 0)
                join role on (ar.role_id = role.id)
                left join  role_permission rp on (role.id = rp.role_id)
-               left join permission pmn on (pmn.id = rp.permission_id and pmn.is_del = 1)
+               left join permission pmn on (pmn.id = rp.permission_id and pmn.is_del = 0)
         where ac.username = #{username}
     </select>
     <select id="findRole" resultType="com.spdata.entity.Role.Role">
@@ -45,7 +45,7 @@
     </select>
     <select id="findPermission" resultType="com.spdata.entity.permission.permission">
         SELECT p.*
-        FROM role_permission rp JOIN permission p ON (rp.permission_id = p.id AND p.is_del = 1) where rp.role_id in
+        FROM role_permission rp JOIN permission p ON (rp.permission_id = p.id AND p.is_del = 0) where rp.role_id in
         <foreach collection="roleid" index="index" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>

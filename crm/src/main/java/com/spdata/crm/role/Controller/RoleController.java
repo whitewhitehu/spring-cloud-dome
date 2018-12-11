@@ -4,6 +4,7 @@ import com.spdata.crm.role.Service.RoleService;
 import com.spdata.crm.role.input.RoleInput;
 import com.spdata.entity.Base.BaseResul;
 import com.spdata.entity.Base.Basemessage;
+import com.spdata.entity.Menu.Menu;
 import com.spdata.entity.Role.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,13 +60,27 @@ public class RoleController {
         return resul;
     }
 
+    @PostMapping(value = "/list")
+    public BaseResul list() {
+        BaseResul resul = new BaseResul();
+        try {
+            List<Role> roles = roleService.findAccountRole();
+            resul.setData(roles);
+        } catch (Exception e) {
+            log.warn(e.getMessage());
+            resul.setCode(Basemessage.error);
+            resul.setMessage(Basemessage.error_message + e.getMessage());
+        }
+        return null;
+    }
+
     /**
-     * 为角色插入菜单数据==>接口
+     * 为角色更新菜单数据==>接口
      *
      * @param roleInput
      * @return
      */
-    @PostMapping(value = "/InsertMenu")
+    @PostMapping(value = "/UpdateMenu")
     public BaseResul insertMenu(@RequestBody RoleInput roleInput) {
         BaseResul resul = new BaseResul();
         try {
@@ -80,12 +95,12 @@ public class RoleController {
     }
 
     /**
-     * 为角色插入权限
+     * 为角色更新权限
      *
      * @param roleInput
      * @return
      */
-    @PostMapping(value = "/InsertPermission")
+    @PostMapping(value = "/UpdatePermission")
     public BaseResul insertPermission(@RequestBody RoleInput roleInput) {
         BaseResul resul = new BaseResul();
         try {
@@ -100,7 +115,7 @@ public class RoleController {
     }
 
     /**
-     * 删除角色对应菜单===>接口
+     * 删除角色对应菜单===>接口 废弃
      *
      * @param roleInput
      * @return
@@ -120,7 +135,7 @@ public class RoleController {
     }
 
     /**
-     * 删除角色对应权限===>接口
+     * 删除角色对应权限===>接口 废弃
      *
      * @param roleInput
      * @return
@@ -139,17 +154,23 @@ public class RoleController {
         return resul;
     }
 
-    @PostMapping(value = "/list")
-    public BaseResul list() {
+    /**
+     * 获取角色对应的菜单
+     *
+     * @param id
+     * @return
+     */
+    @PostMapping(value = "/rolemenu")
+    public BaseResul rolemenu(@RequestParam(value = "id") Integer id) {
         BaseResul resul = new BaseResul();
         try {
-            List<Role> roles = roleService.findAccountRole();
-            resul.setData(roles);
+            List<Integer> menuids = roleService.findRoleMenu(id);
+            resul.setData(menuids);
         } catch (Exception e) {
-            log.warn(e.getMessage());
+            log.error(e.getMessage());
             resul.setCode(Basemessage.error);
             resul.setMessage(Basemessage.error_message + e.getMessage());
         }
-        return null;
+        return resul;
     }
 }

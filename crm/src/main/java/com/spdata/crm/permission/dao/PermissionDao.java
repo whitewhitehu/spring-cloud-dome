@@ -13,7 +13,7 @@ import java.util.List;
 public interface PermissionDao extends BaseInterface<permission> {
     List<permission> findRolePermission(@Param(value = "username") String username);
 
-    List<permission> findAccountIdPermission(@Param(value = "id") Integer id);
+    List<permission> findRoleIdPermission(@Param(value = "id") Integer id);
 
     @Override
     boolean save(@Param(value = "permission") permission permission);

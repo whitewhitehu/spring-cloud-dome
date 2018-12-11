@@ -2,7 +2,7 @@ spring:
   application:
     name: server-crm
   datasource:
-    url: jdbc:mysql://DatabaseUrl:3306/webdb?serverTimezone=GMT%2B8&useSSL=false
+    url: jdbc:mysql://DatabaseUrl:3306/webdb?serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
     username: root
     password: 712yqf
     driver-class-name: com.mysql.cj.jdbc.Driver
