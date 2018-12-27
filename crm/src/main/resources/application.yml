@@ -9,7 +9,7 @@ server:
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    map-underscore-to-camel-case: true
+    mapUnderscoreToCamelCase: true
   type-aliases-package: com.spdata.entity.*
   mapper-locations: classpath*:mapping/*.xml,classpath*:mapping/*/*.xml
 pagehelper:

@@ -82,7 +82,7 @@ CREATE TABLE `menu` (
 -- Records of menu
 -- ----------------------------
 INSERT INTO `menu` VALUES ('1', '系统管理', '/systemMG', 'form', '0', '30', '0', 'layout/Layout', null);
-INSERT INTO `menu` VALUES ('2', '用户管理', '/system/account', 'user', '0', '10', '1', 'Account/index', null);
+INSERT INTO `menu` VALUES ('2', '用户管理', '/system/account', 'user', '0', '10', '1', 'account/index', null);
 INSERT INTO `menu` VALUES ('3', '角色管理', '/system/role', 'form', '0', '20', '1', 'Role/index', null);
 INSERT INTO `menu` VALUES ('4', '权限管理', '/system/Permission', 'form', '0', '30', '1', 'Permission/index', null);
 INSERT INTO `menu` VALUES ('5', '菜单管理', '/system/menu', 'tree', '0', '40', '1', 'Menu/index', null);

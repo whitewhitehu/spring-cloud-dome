@@ -1,10 +1,7 @@
 package com.spdata.crm.configuration;
 
-import com.alibaba.fastjson.JSON;
 import com.spdata.crm.configuration.entrypoint.SpdataAuthenticationEntryPoint;
 import com.spdata.crm.configuration.handler.SpdataAccessDeniedHandler;
-import com.spdata.entity.Base.BaseResul;
-import com.spdata.entity.Base.Basemessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,10 +10,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -26,21 +21,14 @@ import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.security.web.access.AccessDeniedHandler;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @Configuration
-@ComponentScan(basePackages = "com.spdata")
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@ComponentScan(basePackages = {"com.spdata.entity"})
 public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     @Value("${security.oauth2.client.id}")
     private String ClientID;

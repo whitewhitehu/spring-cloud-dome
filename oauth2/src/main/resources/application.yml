@@ -28,6 +28,3 @@ mybatis:
   mapper-locations: classpath*:mapping/*.xml,classpath*:mapping/*/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-logging:
-  level:
-    org.springframework.security.*: debug

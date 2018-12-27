@@ -10,10 +10,20 @@
 
 ### crm模块   运行8763端口
 ####基础功能
+*登陆
+
+![](https://www.cnblogs.com/images/cnblogs_com/yangqifang/1331045/o_QQ%e6%88%aa%e5%9b%be20181227174522.png)
 * 用户管理
-* 菜单管理
+* 角色管理
+
+![](https://www.cnblogs.com/images/cnblogs_com/yangqifang/1331045/o_QQ%e6%88%aa%e5%9b%be20181227174820.png)
 * 权限管理
+
+![](https://www.cnblogs.com/images/cnblogs_com/yangqifang/1331045/o_QQ%e6%88%aa%e5%9b%be20181227174843.png)
+
 * 菜单管理 :递归实现多级菜单
+
+![](https://www.cnblogs.com/images/cnblogs_com/yangqifang/1331045/o_QQ%e6%88%aa%e5%9b%be20181227174843.png)
 ### eurekaserver  eureka注册中心 运行8761端口
 ### gateway  服务网关(所有的服务都通过 zuul 来访问) 运行8080端口
 

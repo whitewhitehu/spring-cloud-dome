@@ -3,6 +3,9 @@ package com.spdata.crm.configuration.entrypoint;
 import com.alibaba.fastjson.JSON;
 import com.spdata.entity.Base.BaseResul;
 import com.spdata.entity.Base.Basemessage;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -18,6 +21,7 @@ import java.io.PrintWriter;
  * @auther yangqifang
  * @data 2018/12/1113:20
  **/
+@Slf4j
 @Component
 public class SpdataAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
@@ -26,11 +30,17 @@ public class SpdataAuthenticationEntryPoint implements AuthenticationEntryPoint 
         baseResul.setCode(Basemessage.ParameterError);
         baseResul.setMessage("无效token:" + e.getLocalizedMessage());
         baseResul.setData(null);
+        PrintWriter writer = null;
         httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
         httpServletResponse.setContentType("application/json");
         httpServletResponse.setCharacterEncoding("UTF-8");
-        PrintWriter writer = httpServletResponse.getWriter();
-        writer.write(JSON.toJSONString(baseResul));
-        writer.close();
+        try {
+            writer = httpServletResponse.getWriter();
+            writer.write(JSON.toJSONString(baseResul));
+        } catch (Exception e1) {
+            log.error(e1.getMessage());
+        } finally {
+            writer.close();
+        }
     }
 }

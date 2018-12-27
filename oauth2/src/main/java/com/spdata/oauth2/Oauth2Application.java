@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan(value = "com.spdata.oauth2.*.Dao")
+@MapperScan(value = "com.spdata.oauth2.*.dao")
 @EnableEurekaClient
 public class Oauth2Application {
 
