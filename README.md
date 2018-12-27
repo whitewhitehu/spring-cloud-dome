@@ -1,13 +1,6 @@
 # 微服务dome
 
 
-
-![](https://yqfile.alicdn.com/00493b59646382083565047f567ed1e12f9d2ce1.png)
-
-![](https://yqfile.alicdn.com/c674c45c4bda78871355581b06397e2cf1b377b9.png)
-
-
-
 ### crm模块   运行8763端口
 ####基础功能
 *登陆
