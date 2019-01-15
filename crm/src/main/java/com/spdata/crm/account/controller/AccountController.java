@@ -46,7 +46,6 @@ public class AccountController {
             Account account = new Account();
             account.setId(id);
             account = accountService.findById(account);
-            account.setPassword("*************");//密码脱敏
             resul.setData(account);
         } catch (Exception e) {
             log.warn(e.getMessage());

@@ -1,6 +1,7 @@
 package com.spdata.crm.account.service;
 
 import com.spdata.crm.account.dao.AccountDao;
+import com.spdata.crm.aspect.retry.Retry;
 import com.spdata.entity.Account.Account;
 import com.spdata.entity.Base.BaseService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,7 @@ public class AccountService extends BaseService<AccountDao, Account> {
      * @param username
      * @return
      */
+    @Retry(number = 1)
     public Account findAccount(String username) {
         return accountDao.findAccount(username);
     }

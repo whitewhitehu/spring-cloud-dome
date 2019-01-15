@@ -1,5 +1,6 @@
 package com.spdata.crm.permission.service;
 
+import com.spdata.crm.aspect.retry.Retry;
 import com.spdata.crm.permission.dao.PermissionDao;
 import com.spdata.crm.tool.SecurityTool;
 import com.spdata.entity.Base.BaseService;
@@ -24,5 +25,10 @@ public class PermissionService extends BaseService<PermissionDao, permission> {
 
     public List<permission> findRoleIdPermission(Integer accountid) {
         return permissionDao.findRoleIdPermission(accountid);
+    }
+
+    @Override
+    public boolean save(permission entity) {
+        return permissionDao.save(entity);
     }
 }

@@ -24,7 +24,7 @@ import javax.sql.DataSource;
  * 授权服务器--配置
  */
 @Configuration
-@ComponentScan(basePackages = {"com.spdata"})
+@ComponentScan(basePackages = {"com.spdata.entity"})
 @EnableAuthorizationServer
 public class AuthorizationServerConfigurer extends AuthorizationServerConfigurerAdapter {
     /**
@@ -107,11 +107,11 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
                 // client_secret
                 .secret("secret")
                 // 该client允许的授权类型
-                .authorizedGrantTypes("password", "refresh_token")
+                .authorizedGrantTypes("authorization_code", "client_credentials", "refresh_token",
+                        "password", "implicit")
                 // 允许的授权范围
                 .scopes("all");
     }
-
 
     /**
      * 端点设置

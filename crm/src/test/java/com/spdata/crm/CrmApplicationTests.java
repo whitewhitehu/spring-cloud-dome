@@ -1,9 +1,13 @@
 package com.spdata.crm;
 
-import com.spdata.crm.account.Service.AccountService;
-import com.spdata.crm.menu.Service.MenuService;
-import com.spdata.crm.role.Service.RoleService;
+import com.spdata.crm.account.service.AccountService;
+import com.spdata.crm.menu.dervice.MenuService;
+import com.spdata.crm.permission.service.PermissionService;
+import com.spdata.crm.role.service.RoleService;
 import com.spdata.crm.permission.dao.PermissionDao;
+import com.spdata.entity.Account.Account;
+import com.spdata.entity.Base.PageParameter;
+import com.spdata.entity.Role.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,13 +24,32 @@ public class CrmApplicationTests {
     @Autowired
     private RoleService roleService;
     @Autowired
-    private PermissionDao permissionDao;
+    private PermissionService permissionService;
     @Autowired
     private MenuService menuService;
 
     @Test
-    public void contextLoads() {
-       Object men= menuService.TreeMenu();
+    public void testSaveRole() {
+        Role role = new Role();
+        role.setName("测试角色");
+        roleService.save(role);
     }
 
+    @Test
+    public void findAccount() {
+        Account account = accountService.findAccount("root");
+        System.out.println(account.getUsername());
+    }
+
+    @Test
+    public void AccountServicefindByPage() {
+        PageParameter pageParameter = new PageParameter();
+        pageParameter.setParament(new Account());
+        accountService.findByPage(pageParameter);
+    }
+
+    @Test
+    public void PermissionSave() {
+        permissionService.save(null);
+    }
 }

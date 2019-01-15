@@ -1,6 +1,7 @@
 logging:
   level:  # 日志级别
-    org.springframework.*: info
+    root: info
+    com.spdata: debug
 server:
   port: 8763
   servlet:
@@ -8,7 +9,6 @@ server:
 
 mybatis:
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     mapUnderscoreToCamelCase: true
   type-aliases-package: com.spdata.entity.*
   mapper-locations: classpath*:mapping/*.xml,classpath*:mapping/*/*.xml

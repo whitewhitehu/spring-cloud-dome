@@ -24,7 +24,7 @@
         update permission set is_del=1 where id=#{permission.id}
     </update>
     <update id="update">
-      update permission set name=#{permission},`value`=#{permission.value}  where id=#{permission.id}
+      update permission set name=#{permission.name},`value`=#{permission.value}  where id=#{permission.id}
     </update>
     <select id="findByPage" resultType="com.spdata.entity.permission.permission">
       select * from permission where is_del=0

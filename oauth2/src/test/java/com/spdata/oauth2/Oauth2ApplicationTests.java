@@ -1,10 +1,8 @@
 package com.spdata.oauth2;
 
-import com.spdata.entity.Role.Role;
 import com.spdata.entity.permission.permission;
-import com.spdata.oauth2.Account.Dao.AccountDao;
-import com.spdata.oauth2.Account.Service.AccountService;
-import com.spdata.oauth2.Account.entity.Account;
+import com.spdata.oauth2.account.dao.AccountDao;
+import com.spdata.oauth2.account.service.AccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @RunWith(SpringRunner.class)

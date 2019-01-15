@@ -1,5 +1,6 @@
 package com.spdata.oauth2.configurer;
 
+import com.spdata.oauth2.CodeAuthenticationProvider;
 import com.spdata.oauth2.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +24,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WEBSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private CodeAuthenticationProvider codeAuthenticationProvider;
 
     @Bean
     @Override
@@ -53,7 +56,10 @@ public class WEBSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(accountService).passwordEncoder(passwordEncoder());
+        auth
+                .authenticationProvider(codeAuthenticationProvider);
+//                .userDetailsService(accountService)
+//                .passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -63,6 +69,7 @@ public class WEBSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.formLogin().permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.csrf().disable();

@@ -1,9 +1,8 @@
 package com.spdata.crm.aspect;
 
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,12 +14,11 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class RoleAspect {
-    @Pointcut(value = "execution(* com.spdata.crm.role.service.RoleService.*(..))")
+    @Pointcut(value = "execution(* com.spdata.crm.role.service.RoleService.findByPage(..))")
     public void roleSave() {
     }
-
-    @After("roleSave()")
+    @Before("roleSave()")
     public void run() {
-        log.info("After: run");
+       System.err.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 }
