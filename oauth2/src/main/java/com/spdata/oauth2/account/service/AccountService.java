@@ -1,7 +1,7 @@
 package com.spdata.oauth2.account.service;
 
-import com.spdata.entity.Base.BaseService;
-import com.spdata.entity.Role.Role;
+import com.spdata.common.base.BaseService;
+import com.spdata.common.role.Role;
 import com.spdata.oauth2.account.dao.AccountDao;
 import com.spdata.oauth2.account.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,14 +1,19 @@
 package com.spdata.crm.account.service;
 
 import com.spdata.crm.account.dao.AccountDao;
-import com.spdata.crm.aspect.retry.Retry;
-import com.spdata.entity.Account.Account;
-import com.spdata.entity.Base.BaseService;
+import com.spdata.common.account.Account;
+import com.spdata.common.base.BaseService;
+import com.spdata.common.role.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
+/**
+ * @author yangqifang
+ */
 @Slf4j
 @Service
 public class AccountService extends BaseService<AccountDao, Account> {
@@ -32,7 +37,6 @@ public class AccountService extends BaseService<AccountDao, Account> {
      * @param username
      * @return
      */
-    @Retry(number = 1)
     public Account findAccount(String username) {
         return accountDao.findAccount(username);
     }
@@ -65,6 +69,26 @@ public class AccountService extends BaseService<AccountDao, Account> {
      */
     @Transactional(rollbackFor = Exception.class)
     public boolean updateAvatar(String avatar, String username) {
-        return accountDao.UpdateAvatar(avatar, username);
+        return accountDao.updateAvatar(avatar, username);
+    }
+
+    /**
+     * 修改用户信息
+     *
+     * @param account
+     * @return
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public boolean updateAccount(Account account) {
+        List<Role> roles = account.getRoles();
+        boolean falg = false;
+        falg = accountDao.update(account);
+        if (roles != null) {
+            //删除角色用户关系
+            falg = accountDao.delectAccountRoleRelation(account.getId());
+            //保存角色用户关系
+            falg = accountDao.saveRole(account.getId(), account.getRoles());
+        }
+        return falg;
     }
 }

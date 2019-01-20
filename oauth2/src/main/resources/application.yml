@@ -37,7 +37,7 @@ eureka:
     prefer-ip-address: true #使用ip注册
     instance-id: ${spring.application.name}:${server.port}
 mybatis:
-  type-aliases-package: com.spdata.oauth2.*.entity,com.spdata.entity.*
+  type-aliases-package: com.spdata.oauth2.*.entity,com.spdata.common
   mapper-locations: classpath*:mapping/*.xml,classpath*:mapping/*/*.xml
   configuration:
     mapUnderscoreToCamelCase: true

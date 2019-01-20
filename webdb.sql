@@ -83,9 +83,9 @@ CREATE TABLE `menu` (
 -- ----------------------------
 INSERT INTO `menu` VALUES ('1', '系统管理', '/systemMG', 'form', '0', '30', '0', 'layout/Layout', null);
 INSERT INTO `menu` VALUES ('2', '用户管理', '/system/account', 'user', '0', '10', '1', 'account/index', null);
-INSERT INTO `menu` VALUES ('3', '角色管理', '/system/role', 'form', '0', '20', '1', 'Role/index', null);
+INSERT INTO `menu` VALUES ('3', '角色管理', '/system/role', 'form', '0', '20', '1', 'role/index', null);
 INSERT INTO `menu` VALUES ('4', '权限管理', '/system/Permission', 'form', '0', '30', '1', 'Permission/index', null);
-INSERT INTO `menu` VALUES ('5', '菜单管理', '/system/menu', 'tree', '0', '40', '1', 'Menu/index', null);
+INSERT INTO `menu` VALUES ('5', '菜单管理', '/system/menu', 'tree', '0', '40', '1', 'menu/index', null);
 INSERT INTO `menu` VALUES ('15', '系统工具', '/systool', 'sys', '0', '20', '0', '/log', null);
 INSERT INTO `menu` VALUES ('16', '测试菜单-修改', '/test', 'test', '0', '10', '15', 'test', null);
 INSERT INTO `menu` VALUES ('17', '测试菜单1-1', 'asdas', 'dwqdwq', '0', '10', '16', 'wqeqw', null);

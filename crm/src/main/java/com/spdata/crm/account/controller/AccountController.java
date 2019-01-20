@@ -2,13 +2,13 @@ package com.spdata.crm.account.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import com.spdata.common.account.Account;
+import com.spdata.common.base.BaseResul;
+import com.spdata.common.base.Basemessage;
+import com.spdata.common.base.PageParameter;
+import com.spdata.common.role.Role;
 import com.spdata.crm.account.service.AccountService;
 import com.spdata.crm.role.service.RoleService;
-import com.spdata.entity.Account.Account;
-import com.spdata.entity.Base.BaseResul;
-import com.spdata.entity.Base.Basemessage;
-import com.spdata.entity.Base.PageParameter;
-import com.spdata.entity.Role.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -105,10 +105,10 @@ public class AccountController {
      */
     @PostMapping(value = "/page")
     @PreAuthorize(value = "hasRole('ADMIN')")
-    public BaseResul Page(PageParameter<Account> accountPageParameter) {
+    public BaseResul Page(@RequestBody PageParameter<Account> accountPageParameter) {
         BaseResul resul = new BaseResul();
         try {
-            PageInfo<Account> pageInfo = accountService.findByPage(accountPageParameter);
+            PageInfo pageInfo = accountService.findByPage(accountPageParameter);
             resul.setData(pageInfo);
         } catch (Exception e) {
             log.warn(e.getMessage());
@@ -187,7 +187,7 @@ public class AccountController {
     }
 
     /**
-     * 修改头像
+     * 修改头像 未完
      *
      * @param multipartFile
      * @return
@@ -202,5 +202,20 @@ public class AccountController {
             resul.setMessage(Basemessage.error_message);
         }
         return null;
+    }
+
+    @PostMapping(value = "/update")
+    public BaseResul update(@RequestBody Account account) {
+        BaseResul resul = new BaseResul();
+        try {
+            boolean falg = accountService.updateAccount(account);
+            resul.setData(falg);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+            resul.setCode(Basemessage.error);
+            resul.setMessage(Basemessage.error_message);
+        }
+        return resul;
     }
 }

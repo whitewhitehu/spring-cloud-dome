@@ -10,13 +10,13 @@
         <result column="country" property="country"></result>
         <result column="avatar" property="avatar"></result>
         <result column="is_del" property="is_del"></result>
-        <collection property="roles" ofType="com.spdata.entity.Role.Role">
+        <collection property="roles" ofType="com.spdata.common.role.Role">
             <id column="role_id" property="id"></id>
             <result column="role_name" property="name"></result>
             <result column="role_create_time" property="create_time"></result>
             <result column="role_is_del" property="is_del"></result>
         </collection>
-        <collection property="permissions" ofType="com.spdata.entity.permission.permission">
+        <collection property="permissions" ofType="com.spdata.common.permission.permission">
             <id column="pmn_id" property="id"></id>
             <result column="pmn_name" property="name"></result>
             <result column="pmn_value" property="value"></result>
@@ -40,10 +40,10 @@
                left join permission pmn on (pmn.id = rp.permission_id and pmn.is_del = 0)
         where ac.username = #{username}
     </select>
-    <select id="findRole" resultType="com.spdata.entity.Role.Role">
+    <select id="findRole" resultType="com.spdata.common.role.Role">
         SELECT role.* FROM role JOIN account_role ar ON(role.id=ar.role_id) WHERE ar.account_id=#{userid}
     </select>
-    <select id="findPermission" resultType="com.spdata.entity.permission.permission">
+    <select id="findPermission" resultType="com.spdata.common.permission.permission">
         SELECT p.*
         FROM role_permission rp JOIN permission p ON (rp.permission_id = p.id AND p.is_del = 0) where rp.role_id in
         <foreach collection="roleid" index="index" item="item" open="(" separator="," close=")">

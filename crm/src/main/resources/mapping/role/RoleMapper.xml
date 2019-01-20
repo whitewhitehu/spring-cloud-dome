@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.spdata.crm.role.dao.RoleDao">
-    <resultMap id="role" type="com.spdata.entity.Role.Role">
+    <resultMap id="role" type="com.spdata.common.role.Role">
         <id column="id" property="id"></id>
         <result column="name" property="name"></result>
         <result column="create_time" property="create_time"></result>
@@ -24,9 +24,7 @@
             where account.username=#{AccountName}
         </if>
         <if test="AccountName=='root'">
-            select role.*
-            from account_role join account on (account.id=account_role.account_id)
-            join role on (account_role.id = role.id)
+           select * from role where is_del=0
         </if>
     </select>
     <insert id="save">

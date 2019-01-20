@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter
 @Slf4j
 @Setter
-public class Account extends com.spdata.entity.Account.Account implements UserDetails {
+public class Account extends com.spdata.common.account.Account implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

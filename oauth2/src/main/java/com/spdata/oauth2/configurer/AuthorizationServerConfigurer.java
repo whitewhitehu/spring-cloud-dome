@@ -24,7 +24,7 @@ import javax.sql.DataSource;
  * 授权服务器--配置
  */
 @Configuration
-@ComponentScan(basePackages = {"com.spdata.entity"})
+@ComponentScan(basePackages = {"com.spdata.common"})
 @EnableAuthorizationServer
 public class AuthorizationServerConfigurer extends AuthorizationServerConfigurerAdapter {
     /**

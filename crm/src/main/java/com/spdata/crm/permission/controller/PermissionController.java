@@ -1,11 +1,11 @@
 package com.spdata.crm.permission.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.spdata.common.base.BaseResul;
+import com.spdata.common.base.Basemessage;
+import com.spdata.common.base.PageParameter;
+import com.spdata.common.permission.permission;
 import com.spdata.crm.permission.service.PermissionService;
-import com.spdata.entity.Base.BaseResul;
-import com.spdata.entity.Base.Basemessage;
-import com.spdata.entity.Base.PageParameter;
-import com.spdata.entity.permission.permission;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

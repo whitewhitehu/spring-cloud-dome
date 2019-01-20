@@ -4,7 +4,24 @@
     <sql id="sql">
                 id,username,password,givename,avatar,mailbox,country,is_del
     </sql>
-    <select id="findByid" resultType="com.spdata.entity.Account.Account">
+    <resultMap id="base_account" type="com.spdata.common.account.Account">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result property="givename" column="givename"/>
+        <result property="avatar" column="avatar"/>
+        <result property="mailbox" column="mailbox"/>
+        <result property="country" column="country"/>
+        <result property="is_del" column="is_del"/>
+    </resultMap>
+    <resultMap id="account_role" type="com.spdata.common.account.Account" extends="base_account">
+        <collection property="roles" javaType="java.util.List" select="findRolesByAccountID"
+                    column="id=id">
+            <id column="id" property="id"/>
+            <result property="name" column="name"/>
+        </collection>
+    </resultMap>
+    <select id="findByid" resultMap="base_account">
         select
         <include refid="sql"/>
         from account
@@ -18,7 +35,7 @@
     <update id="delect">
         update account set is_del=0 where id=#{account.id}
     </update>
-    <select id="findByPage" resultType="com.spdata.entity.Account.Account">
+    <select id="findByPage" resultMap="account_role">
         select
         <include refid="sql"/>
         FROM account
@@ -31,7 +48,7 @@
     <update id="updatePassword">
         update account set password=#{account.password} where username=#{account.username}
     </update>
-    <select id="findAccount" resultType="com.spdata.entity.Account.Account">
+    <select id="findAccount" resultMap="base_account">
         select
         <include refid="sql"/>
         from account
@@ -43,7 +60,23 @@
             (#{account_id},#{item.id})
         </foreach>
     </insert>
-    <update id="UpdateAvatar">
+    <update id="updateAvatar">
         update account set avatar=#{Avatar} where username=#{username}
     </update>
+    <update id="update" parameterType="com.spdata.common.account.Account">
+        update account
+        <set>
+            <if test="account.password != null">password=#{account.password},</if>
+            <if test="account.mailbox != null">mailbox=#{account.mailbox},</if>
+            <if test="account.country!=null">country=#{account.country},</if>
+            <if test="account.givename!=null">givename=#{account.givename},</if>
+        </set>
+        where id=#{account.id}
+    </update>
+    <delete id="delectAccountRoleRelation">
+      delete from account_role where account_id=#{id}
+    </delete>
+    <select id="findRolesByAccountID" resultType="com.spdata.common.role.Role">
+            select role.* from role join account_role on role.id=account_role.role_id and role.is_del=0 where account_role.account_id=#{id}
+    </select>
 </mapper>

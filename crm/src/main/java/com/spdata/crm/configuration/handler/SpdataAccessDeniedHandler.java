@@ -1,8 +1,8 @@
 package com.spdata.crm.configuration.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.spdata.entity.Base.BaseResul;
-import com.spdata.entity.Base.Basemessage;
+import com.spdata.common.base.BaseResul;
+import com.spdata.common.base.Basemessage;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;

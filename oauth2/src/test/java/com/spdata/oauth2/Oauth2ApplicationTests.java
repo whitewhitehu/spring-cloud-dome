@@ -1,6 +1,6 @@
 package com.spdata.oauth2;
 
-import com.spdata.entity.permission.permission;
+import com.spdata.common.permission.permission;
 import com.spdata.oauth2.account.dao.AccountDao;
 import com.spdata.oauth2.account.service.AccountService;
 import lombok.extern.slf4j.Slf4j;

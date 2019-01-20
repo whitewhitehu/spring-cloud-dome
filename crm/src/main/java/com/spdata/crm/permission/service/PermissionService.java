@@ -1,12 +1,11 @@
 package com.spdata.crm.permission.service;
 
-import com.spdata.crm.aspect.retry.Retry;
+import com.spdata.common.base.BaseService;
+import com.spdata.common.permission.permission;
 import com.spdata.crm.permission.dao.PermissionDao;
 import com.spdata.crm.tool.SecurityTool;
-import com.spdata.entity.Base.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.spdata.entity.permission.permission;
 
 import java.util.List;
 

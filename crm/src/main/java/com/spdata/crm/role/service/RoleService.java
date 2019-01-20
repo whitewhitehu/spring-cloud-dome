@@ -1,10 +1,10 @@
 package com.spdata.crm.role.service;
 
+import com.spdata.common.base.BaseService;
+import com.spdata.common.role.Role;
 import com.spdata.crm.role.dao.RoleDao;
 import com.spdata.crm.role.input.RoleInput;
 import com.spdata.crm.tool.SecurityTool;
-import com.spdata.entity.Base.BaseService;
-import com.spdata.entity.Role.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -12,13 +12,13 @@
         update menu set name=#{menu.name},url=#{menu.url},icon=#{menu.icon},sort=#{menu.sort},component=#{menu.component},render=#{menu.render}
          where id=#{menu.id}
     </update>
-    <resultMap id="TreeMenu" type="com.spdata.entity.Menu.Menu">
+    <resultMap id="TreeMenu" type="com.spdata.common.menu.Menu">
         <id column="id" property="id"></id>
         <result column="name" property="name"></result>
         <result column="url" property="url"></result>
         <result column="is_del" property="is_del"></result>
         <result column="icon" property="icon"></result>
-        <result column="rander" property="rander"></result>
+        <result column="rander" property="render"></result>
         <result column="component" property="component"></result>
     </resultMap>
     <select id="TreeMenu" resultMap="TreeMenu">

@@ -1,14 +1,13 @@
 package com.spdata.crm.menu.controller;
 
+import com.spdata.common.base.BaseResul;
+import com.spdata.common.base.Basemessage;
+import com.spdata.common.menu.Menu;
 import com.spdata.crm.menu.dervice.MenuService;
 import com.spdata.crm.role.service.RoleService;
-import com.spdata.entity.Base.BaseResul;
-import com.spdata.entity.Base.Basemessage;
-import com.spdata.entity.Menu.Menu;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

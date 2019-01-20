@@ -1,7 +1,7 @@
 package com.spdata.crm.menu.dao;
 
-import com.spdata.entity.Base.BaseInterface;
-import com.spdata.entity.Menu.Menu;
+import com.spdata.common.base.BaseInterface;
+import com.spdata.common.menu.Menu;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;

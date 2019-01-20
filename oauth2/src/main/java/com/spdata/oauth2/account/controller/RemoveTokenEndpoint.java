@@ -1,6 +1,6 @@
 package com.spdata.oauth2.account.controller;
 
-import com.spdata.entity.Base.BaseResul;
+import com.spdata.common.base.BaseResul;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.endpoint.FrameworkEndpoint;
@@ -33,7 +33,7 @@ public class RemoveTokenEndpoint {
         BaseResul resul = new BaseResul();
         try {
             boolean ifRemove = tokenServices.revokeToken(access_token);
-            if (ifRemove) {
+            if (!ifRemove) {
                 throw new Exception("注销失败");
             }
             resul.setData(ifRemove);

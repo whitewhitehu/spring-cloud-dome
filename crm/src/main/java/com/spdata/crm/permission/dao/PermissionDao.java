@@ -1,7 +1,7 @@
 package com.spdata.crm.permission.dao;
 
-import com.spdata.entity.Base.BaseInterface;
-import com.spdata.entity.permission.permission;
+import com.spdata.common.base.BaseInterface;
+import com.spdata.common.permission.permission;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;

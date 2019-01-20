@@ -1,10 +1,8 @@
 package com.spdata.crm.configuration.entrypoint;
 
 import com.alibaba.fastjson.JSON;
-import com.spdata.entity.Base.BaseResul;
-import com.spdata.entity.Base.Basemessage;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
+import com.spdata.common.base.BaseResul;
+import com.spdata.common.base.Basemessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

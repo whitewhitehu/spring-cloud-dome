@@ -9,9 +9,9 @@ server:
 
 mybatis:
   configuration:
-    mapUnderscoreToCamelCase: true
-  type-aliases-package: com.spdata.entity.*
-  mapper-locations: classpath*:mapping/*.xml,classpath*:mapping/*/*.xml
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.spdata.common
+  mapper-locations: classpath*:mapping/**/*.xml
 pagehelper:
   reasonable: true
   offset-as-page-num: true

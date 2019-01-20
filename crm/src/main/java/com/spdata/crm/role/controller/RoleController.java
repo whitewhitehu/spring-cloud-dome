@@ -1,10 +1,10 @@
 package com.spdata.crm.role.controller;
 
-import com.spdata.crm.role.service.RoleService;
+import com.spdata.common.base.BaseResul;
+import com.spdata.common.base.Basemessage;
+import com.spdata.common.role.Role;
 import com.spdata.crm.role.input.RoleInput;
-import com.spdata.entity.Base.BaseResul;
-import com.spdata.entity.Base.Basemessage;
-import com.spdata.entity.Role.Role;
+import com.spdata.crm.role.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

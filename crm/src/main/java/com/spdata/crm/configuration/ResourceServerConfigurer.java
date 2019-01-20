@@ -28,7 +28,7 @@ import java.util.List;
 @Configuration
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@ComponentScan(basePackages = {"com.spdata.entity"})
+@ComponentScan(basePackages = {"com.spdata.common"})
 public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     @Value("${security.oauth2.client.id}")
     private String ClientID;

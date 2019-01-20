@@ -1,7 +1,7 @@
 package com.spdata.oauth2.configurer.exceptiontranslator;
 
-import com.spdata.entity.Base.BaseResul;
-import com.spdata.entity.Base.Basemessage;
+import com.spdata.common.base.BaseResul;
+import com.spdata.common.base.Basemessage;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.common.exceptions.InvalidGrantException;
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;

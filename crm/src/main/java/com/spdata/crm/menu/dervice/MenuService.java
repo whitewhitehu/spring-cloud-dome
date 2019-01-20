@@ -1,9 +1,9 @@
 package com.spdata.crm.menu.dervice;
 
+import com.spdata.common.base.BaseService;
+import com.spdata.common.menu.Menu;
 import com.spdata.crm.menu.dao.MenuDao;
 import com.spdata.crm.tool.SecurityTool;
-import com.spdata.entity.Base.BaseService;
-import com.spdata.entity.Menu.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

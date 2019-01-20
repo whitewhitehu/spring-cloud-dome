@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.spdata.crm.permission.dao.PermissionDao">
-    <select id="findRolePermission" resultType="com.spdata.entity.permission.permission">
+    <select id="findRolePermission" resultType="com.spdata.common.permission.permission">
         select permission.*
         from role
                join account_role on (account_role.role_id = role.id and role.is_del = 0)
@@ -10,7 +10,7 @@
                join permission on (permission.id = role_permission.permission_id and permission.is_del = 0)
         where account.username = #{username} group by permission.id
     </select>
-    <select id="findRoleIdPermission" resultType="com.spdata.entity.permission.permission">
+    <select id="findRoleIdPermission" resultType="com.spdata.common.permission.permission">
             select permission.*
             from role
                    join role_permission on role.is_del = 0 and role.id = role_permission.role_id
@@ -26,7 +26,7 @@
     <update id="update">
       update permission set name=#{permission.name},`value`=#{permission.value}  where id=#{permission.id}
     </update>
-    <select id="findByPage" resultType="com.spdata.entity.permission.permission">
+    <select id="findByPage" resultType="com.spdata.common.permission.permission">
       select * from permission where is_del=0
     </select>
 </mapper>
