@@ -18,7 +18,7 @@
         <result column="url" property="url"></result>
         <result column="is_del" property="is_del"></result>
         <result column="icon" property="icon"></result>
-        <result column="rander" property="render"></result>
+        <result column="render" property="render"></result>
         <result column="component" property="component"></result>
     </resultMap>
     <select id="TreeMenu" resultMap="TreeMenu">

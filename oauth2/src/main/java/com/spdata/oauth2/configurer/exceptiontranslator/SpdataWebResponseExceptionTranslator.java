@@ -9,8 +9,10 @@ import org.springframework.security.oauth2.provider.error.DefaultWebResponseExce
 import org.springframework.stereotype.Component;
 
 /**
+ * 获取token失败----返回信息进行处理
+ *
+ * @author yangqifang
  * @描述:
- * @auther yangqifang
  * @data 2018/12/621:44
  **/
 @Component

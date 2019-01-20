@@ -4,7 +4,7 @@ logging:
   level:
     root: warn
     com.spdata: debug
-    org.springframework.security.oauth2: debug
+    org.springframework.security: debug
 spring:
   application:
     name: server-oauth2

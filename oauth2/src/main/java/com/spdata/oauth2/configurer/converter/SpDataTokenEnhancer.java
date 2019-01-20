@@ -11,6 +11,7 @@ import java.util.*;
 
 /**
  * token 增强器  可以自定义登陆成功是返回的数据格式
+ * @author yangqifang
  */
 @Component
 public class SpDataTokenEnhancer implements TokenEnhancer {

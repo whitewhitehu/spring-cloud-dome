@@ -7,29 +7,48 @@ import lombok.ToString;
 
 import java.util.List;
 
+/**
+ * @author yangqifang
+ */
 @Getter
 @Setter
 @ToString
 public class Menu {
     private Integer id;
-    //菜单名称
+    /**
+     * name:名称
+     */
     private String name;
-    //菜单地址
+    /**
+     * 菜单地址
+     */
     @JSONField(name = "path")
     private String url;
-    //图标
+    /**
+     * 图标
+     */
     private String icon;
-    //是否删除
+    /**
+     * 是否删除
+     */
     @JSONField(serialize = false)
     private Boolean is_del;
-    //父级菜单ID
+    /**
+     * 父级菜单ID
+     */
     private Integer superior;
-    //排序值
+    /**
+     * 排序值
+     */
     private Integer sort;
-    //前端组件
+    /**
+     * 前端组件路径
+     */
     @JSONField(name = "component")
     private String component;
-    //目标渲染组件
+    /**
+     * 目标渲染组件
+     */
     private String render;
     private List<Menu> children;
 }

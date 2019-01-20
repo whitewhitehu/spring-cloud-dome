@@ -1,5 +1,6 @@
 package com.spdata.oauth2.configurer;
 
+import com.spdata.oauth2.account.service.AccountService;
 import com.spdata.oauth2.configurer.converter.SpDataTokenEnhancer;
 import com.spdata.oauth2.configurer.exceptiontranslator.SpdataWebResponseExceptionTranslator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ import javax.sql.DataSource;
 
 /**
  * 授权服务器--配置
+ *
+ * @author yangqifang
  */
 @Configuration
 @ComponentScan(basePackages = {"com.spdata.common"})
@@ -41,6 +44,8 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     private SpDataTokenEnhancer spDataTokenEnhancer;
     @Autowired
     private SpdataWebResponseExceptionTranslator translator;
+    @Autowired
+    private AccountService accountService;
 
     /**
      * token保存在数据库中
@@ -81,7 +86,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("spdata-yang");
+        converter.setSigningKey("5e6374c3-2cf9-4b08-a251-e7706b03cece");
         return converter;
     }
 
@@ -107,8 +112,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
                 // client_secret
                 .secret("secret")
                 // 该client允许的授权类型
-                .authorizedGrantTypes("authorization_code", "client_credentials", "refresh_token",
-                        "password", "implicit")
+                .authorizedGrantTypes("authorization_code", "password")
                 // 允许的授权范围
                 .scopes("all");
     }
@@ -123,6 +127,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .tokenServices(tokenServices())
+                .userDetailsService(accountService)
                 .exceptionTranslator(translator)
                 .authenticationManager(authenticationManager);
     }

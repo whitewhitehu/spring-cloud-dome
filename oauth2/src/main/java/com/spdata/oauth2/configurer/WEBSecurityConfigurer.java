@@ -17,15 +17,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * 安全配置
+ *
+ * @author yangqifang
  */
 @Configuration
 @EnableWebSecurity
 @Order(value = Integer.MAX_VALUE)
 public class WEBSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Autowired
-    private AccountService accountService;
-    @Autowired
     private CodeAuthenticationProvider codeAuthenticationProvider;
+    @Autowired
+    private AccountService accountService;
 
     @Bean
     @Override
@@ -56,10 +58,7 @@ public class WEBSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .authenticationProvider(codeAuthenticationProvider);
-//                .userDetailsService(accountService)
-//                .passwordEncoder(passwordEncoder());
+        auth.userDetailsService(accountService);
     }
 
     @Override
@@ -69,12 +68,20 @@ public class WEBSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().permitAll();
-        http.authorizeRequests().anyRequest().authenticated();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.csrf().disable();
-        http.httpBasic().disable();
-        http.authorizeRequests().antMatchers("/actuator/**", "/oauth/token/logout").permitAll();
+        http.
+                formLogin()
+                .permitAll()
+                .and()
+                .csrf()
+                .disable()
+                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //如果需要使用授权码模式请注释本条代码
+                .and()
+                .authorizeRequests()
+                .antMatchers("/actuator/**", "/oauth/token/logout")
+                .permitAll()
+                .and()
+                .authorizeRequests().anyRequest().authenticated();
     }
 }
 
