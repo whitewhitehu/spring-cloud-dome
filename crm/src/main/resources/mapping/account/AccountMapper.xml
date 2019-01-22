@@ -2,17 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.spdata.crm.account.dao.AccountDao">
     <sql id="sql">
-                id,username,password,givename,avatar,mailbox,country,is_del
+                id,username,password,dept_id,givename,avatar,mailbox,country,phone,is_del
     </sql>
     <resultMap id="base_account" type="com.spdata.common.account.Account">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
+        <result column="dept_id" property="deptId"></result>
         <result property="givename" column="givename"/>
         <result property="avatar" column="avatar"/>
         <result property="mailbox" column="mailbox"/>
         <result property="country" column="country"/>
         <result property="is_del" column="is_del"/>
+        <result property="phone" column="phone"></result>
     </resultMap>
     <resultMap id="account_role" type="com.spdata.common.account.Account" extends="base_account">
         <collection property="roles" javaType="java.util.List" select="findRolesByAccountID"

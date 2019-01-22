@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author yangqifang
  */
@@ -17,4 +19,7 @@ public interface SysDictDao extends BaseInterface<SysDict> {
 
     @Override
     boolean update(@Param(value = "sysDict") SysDict sysDict);
+
+    @Override
+    List<SysDict> findByPage(SysDict sysDict);
 }

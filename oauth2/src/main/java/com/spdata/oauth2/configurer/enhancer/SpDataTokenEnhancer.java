@@ -1,4 +1,4 @@
-package com.spdata.oauth2.configurer.converter;
+package com.spdata.oauth2.configurer.enhancer;
 
 
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;

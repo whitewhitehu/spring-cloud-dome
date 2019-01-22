@@ -11,6 +11,9 @@ import lombok.ToString;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @author yangqifang
+ */
 @Getter
 @Setter
 @ToString
@@ -19,10 +22,12 @@ public class Account implements Serializable {
     private String username;
     @JSONField(serialize = false)
     private String password;
+    private Integer deptId;
     private String mailbox;
     private String givename;
     private String country;
     private String avatar;
+    private int phone;
     private boolean is_del;
     private List<Role> roles;
     @JSONField(serialize = false)

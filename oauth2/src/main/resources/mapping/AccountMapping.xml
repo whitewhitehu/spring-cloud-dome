@@ -5,11 +5,13 @@
         <id column="id" property="id"></id>
         <result column="username" property="username"></result>
         <result column="password" property="password"></result>
+        <result column="dept_id" property="deptId"></result>
         <result column="mailbox" property="mailbox"></result>
         <result column="givename" property="givename"></result>
         <result column="country" property="country"></result>
         <result column="avatar" property="avatar"></result>
         <result column="is_del" property="is_del"></result>
+        <result property="phone" column="phone"></result>
         <collection property="roles" ofType="com.spdata.common.role.Role">
             <id column="role_id" property="id"></id>
             <result column="role_name" property="name"></result>

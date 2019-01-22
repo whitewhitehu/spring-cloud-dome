@@ -1,7 +1,7 @@
 package com.spdata.oauth2.configurer;
 
 import com.spdata.oauth2.account.service.AccountService;
-import com.spdata.oauth2.configurer.converter.SpDataTokenEnhancer;
+import com.spdata.oauth2.configurer.enhancer.SpDataTokenEnhancer;
 import com.spdata.oauth2.configurer.exceptiontranslator.SpdataWebResponseExceptionTranslator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -84,7 +84,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
      * @return
      */
     @Bean
-    public JwtAccessTokenConverter accessTokenConverter() {
+    public JwtAccessTokenConverter JwtaccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey("5e6374c3-2cf9-4b08-a251-e7706b03cece");
         return converter;
