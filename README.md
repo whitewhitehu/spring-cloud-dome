@@ -1,36 +1,30 @@
-# 微服务dome
+## spring cloud 
+
+### 1.eureka模块-服务注册中心
+### 2.oauth2模块-认证授权服务
+### 3.gateway模块-网关(主要用于路由转发)
+### 3.crm模块-基础服务
+### 4.common模块-目前主要存用与存放实体类
+### CRM模块功能
+
+* 1.用户管理
+* 2.部门管理
+* 3.菜单管理
+* 4.角色管理
+* 5.权限管理
 
 
-### crm模块   运行8763端口
-####基础功能
-*登陆
 
-![](https://www.cnblogs.com/images/cnblogs_com/yangqifang/1331045/o_QQ%e6%88%aa%e5%9b%be20181227174522.png)
-* 用户管理
-* 角色管理
 
-![](https://www.cnblogs.com/images/cnblogs_com/yangqifang/1331045/o_QQ%e6%88%aa%e5%9b%be20181227174820.png)
-* 权限管理
-
-![](https://www.cnblogs.com/images/cnblogs_com/yangqifang/1331045/o_QQ%e6%88%aa%e5%9b%be20181227174843.png)
-
-* 菜单管理 :递归实现多级菜单
-
-![](https://www.cnblogs.com/images/cnblogs_com/yangqifang/1331045/o_QQ%e6%88%aa%e5%9b%be20181227174843.png)
-### eurekaserver  eureka注册中心 运行8761端口
-### gateway  服务网关(所有的服务都通过 zuul 来访问) 运行8080端口
-
-### oauth2 认证中心 使用sprig cloud oauth2 运行在8762端口
-
-## 采用Restful Api 返回数据 
+* 系统与前端的数据交互主要采用Restful Api 的方式实现 
 
 ### spring boot 版本
-		
-		<groupId>org.springframework.boot</groupId>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
             <version>2.0.4.RELEASE</version>
-
-### 分享两个个zuul网关的注意事项 
-
-	1.通过zuul访问oauth2时请求头会造成丢失 在网关的配置文件中将sensitiveHeaders设置为空 即可解决
-	2.zuul访问带有server.path 的服务时 会产生404 找不到接口  将strip-Prefix设置为true 即可解决
+### 部署
+* 1.安装mysql8数据库 将项目中的webdb.sql脚本文件导入到数据库中 PS:mysql其他版本没试过 我电脑上使用的是mysql 8.0.12版本
+* 2.修改oauth2认证授权服务中的数据库连接地址密码
+* 3.修改CRM服务中的数据库连接地址与密码 CRM服务使用的是OAUTH2协议中的password认证授权模式可以在application-test.yml文件中修改
+* 4.如果发现找不到common包下的类 可以在common模块的文件目录中执行命令:mvn clean install
+* 5.运行步骤 1.运行eureka注册中心 2.启动oauth2认证授权服务 3.启动CRM基础服务 4.启动gateway网关
