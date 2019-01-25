@@ -1,9 +1,13 @@
 package com.spdata.crm.account.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.spdata.common.base.PageParameter;
 import com.spdata.crm.account.dao.AccountDao;
 import com.spdata.common.account.Account;
 import com.spdata.common.base.BaseService;
 import com.spdata.common.role.Role;
+import com.spdata.crm.tool.SecurityTool;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -90,5 +94,26 @@ public class AccountService extends BaseService<AccountDao, Account> {
             falg = accountDao.saveRole(account.getId(), account.getRoles());
         }
         return falg;
+    }
+
+    /**
+     * 分页查询 当前部门(包含子部门)的下的账户信息
+     *
+     * @param pageParameter
+     * @return
+     */
+    @Override
+    public PageInfo<Account> findByPage(PageParameter<Account> pageParameter) {
+        PageHelper.startPage(pageParameter.getPagenum(), pageParameter.getPagesize());
+        /**
+         * 如果部门ID为空 则根据当前账户的部门进行查询
+         */
+        if (pageParameter.getParament() == null || pageParameter.getParament().getDeptId() == null) {
+            Account account = accountDao.findAccount(SecurityTool.getSecurityUserName());
+            pageParameter.setParament(account);
+        }
+        List<Account> list = accountDao.findByPage(pageParameter.getParament());
+        PageInfo<Account> pageInfo = new PageInfo<>(list);
+        return pageInfo;
     }
 }

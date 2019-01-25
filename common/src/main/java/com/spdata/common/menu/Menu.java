@@ -1,6 +1,7 @@
 package com.spdata.common.menu;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,17 +14,18 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class Menu {
     private Integer id;
     /**
-     * name:名称
+     * title:名称
      */
-    private String name;
+    private String title;
     /**
      * 菜单地址
      */
     @JSONField(name = "path")
-    private String url;
+    private String path;
     /**
      * 图标
      */
@@ -47,8 +49,13 @@ public class Menu {
     @JSONField(name = "component")
     private String component;
     /**
-     * 目标渲染组件
+     * 重定向地址
      */
-    private String render;
+    private String redirect;
+    /**
+     * 是否隐藏 默认false 不隐藏
+     */
+    private boolean hidden;
+    @JSONField(ordinal = 10)
     private List<Menu> children;
 }

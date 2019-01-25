@@ -30,9 +30,26 @@
         where id=#{account.id}
     </select>
     <insert id="save" useGeneratedKeys="true" keyColumn="id" keyProperty="account.id">
-        insert into account(id,username,password,givename,mailbox,country)
+        insert into account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="account.id != null">id,</if>
+            <if test="account.username != null">username,</if>
+            <if test="account.password != null">password,</if>
+            <if test="account.givename != null">givename,</if>
+            <if test="account.mailbox != null">mailbox,</if>
+            <if test="account.country != null">country,</if>
+            <if test="account.deptId != null">dept_id,</if>
+        </trim>
         value
-        (#{account.id},#{account.username},#{account.password},#{account.givename},#{account.mailbox},#{account.country})
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="account.id != null">#{account.id},</if>
+            <if test="account.username != null">#{account.username},</if>
+            <if test="account.password != null">#{account.password},</if>
+            <if test="account.givename != null">#{account.givename},</if>
+            <if test="account.mailbox != null">#{account.mailbox},</if>
+            <if test="account.country != null">#{account.country},</if>
+            <if test="account.deptId != null">#{account.deptId},</if>
+        </trim>
     </insert>
     <update id="delect">
         update account set is_del=0 where id=#{account.id}
@@ -42,8 +59,9 @@
         <include refid="sql"/>
         FROM account
         <where>
+            <if test="account.deptId != null">FIND_IN_SET(dept_id, getDeptChild(#{account.deptId} ))</if>
             <if test="account !=null and account.is_del==true">
-                is_del=#{account.is_del}
+                and is_del=#{account.is_del}
             </if>
         </where>
     </select>
@@ -72,6 +90,7 @@
             <if test="account.mailbox != null">mailbox=#{account.mailbox},</if>
             <if test="account.country!=null">country=#{account.country},</if>
             <if test="account.givename!=null">givename=#{account.givename},</if>
+            <if test="account.deptId != null">dept_id=#{account.deptId}</if>
         </set>
         where id=#{account.id}
     </update>

@@ -47,7 +47,12 @@ public class DeptService extends BaseService<deptDao, Dept> {
             deptTrees.add(tree);
         });
         //查找当前部门
-        DeptTree parentDeptNode = deptTrees.stream().filter(node -> node.getId().equals(deptID)).findAny().get();
+        DeptTree parentDeptNode = null;
+        try {
+            parentDeptNode = deptTrees.stream().filter(node -> node.getId().equals(deptID)).findAny().get();
+        } catch (Exception e) {
+
+        }
         List<DeptTree> treeList = DeptTreeGroup(deptTrees, deptID);
         /**
          * 如果当前部门存在就将部门子树添加子属性中
