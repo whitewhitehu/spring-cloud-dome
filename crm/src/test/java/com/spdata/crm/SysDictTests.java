@@ -29,7 +29,7 @@ public class SysDictTests {
         pageParameter.setPagenum(1);
         pageParameter.setPagesize(10);
         SysDict dict = new SysDict();
-        dict.setIsDel(0);
+        dict.setGroup("1");
         pageParameter.setParament(dict);
         PageInfo pageInfo = sysDictService.findByPage(pageParameter);
         log.warn(pageInfo.toString());

@@ -16,7 +16,7 @@ public class SysDict {
 
     private String name;
 
-    private String type;
+    private String group;
 
     private String value;
 

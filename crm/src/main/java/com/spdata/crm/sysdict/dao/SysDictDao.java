@@ -22,4 +22,5 @@ public interface SysDictDao extends BaseInterface<SysDict> {
 
     @Override
     List<SysDict> findByPage(SysDict sysDict);
+
 }

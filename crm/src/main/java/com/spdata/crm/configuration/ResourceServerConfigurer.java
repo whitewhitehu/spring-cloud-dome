@@ -21,6 +21,7 @@ import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,6 +116,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
         stringList.add("/admin/swagger-ui.html");
         stringList.add("/admin/swagger-resources/**");
         stringList.add("/admin/v2/api-docs");
+        stringList.add("/actuator/**");
         String[] permitAll = new String[stringList.size()];
         stringList.toArray(permitAll);
         return permitAll;
