@@ -5,6 +5,9 @@ eureka:
     hostname: localhost
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${server.port}
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
   client:
     registerWithEureka: true # 将自己也注册
     fetchRegistry: true #获取注册表
@@ -15,5 +18,10 @@ spring:
     name: eurka-server
   security:
     user:
-      name: eureka
-      password: eureka
+      name: spdata
+      password: spdata
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

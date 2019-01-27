@@ -1,7 +1,7 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone:  http://eureka:eureka@localhost:8761/eureka/
+      defaultZone:  http://spdata:spdata@localhost:8761/eureka/
   instance:
     prefer-ip-address: true
 spring:

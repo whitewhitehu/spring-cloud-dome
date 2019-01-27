@@ -78,10 +78,13 @@ public class WEBSecurityConfigurer extends WebSecurityConfigurerAdapter {
 //                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //如果需要使用授权码模式请注释本条代码
                 .and()
                 .authorizeRequests()
-                .antMatchers("/actuator/**", "/oauth/token/logout")
+                .antMatchers("/actuator/**")
                 .permitAll()
                 .and()
-                .authorizeRequests().anyRequest().authenticated();
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and();
     }
 }
 

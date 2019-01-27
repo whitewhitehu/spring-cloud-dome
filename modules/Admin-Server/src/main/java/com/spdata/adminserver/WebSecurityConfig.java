@@ -20,7 +20,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         log.info("加载security-http配置");
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
-                .and().httpBasic();
+                .and().httpBasic().and()
+                .formLogin().loginPage("/login");
     }
 }

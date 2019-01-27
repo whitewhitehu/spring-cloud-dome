@@ -6,7 +6,6 @@ server:
   port: 8763
   servlet:
     path: /admin
-
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
@@ -25,6 +24,15 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka:eureka@localhost:8761/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka/
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+      management.context-path: ${server.servlet.path}/actuator
+#actuate 监控配置
+  server:
+    servlet:
+      context-path: ${server.servlet.path}

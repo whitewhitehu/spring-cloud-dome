@@ -116,7 +116,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
         stringList.add("/admin/swagger-ui.html");
         stringList.add("/admin/swagger-resources/**");
         stringList.add("/admin/v2/api-docs");
-        stringList.add("/actuator/**");
+        stringList.add("/admin/actuator/**");
         String[] permitAll = new String[stringList.size()];
         stringList.toArray(permitAll);
         return permitAll;
@@ -126,6 +126,5 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(permitAll()).permitAll();
-        super.configure(http);
     }
 }

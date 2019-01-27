@@ -29,13 +29,19 @@ spring:
   security:
     filter:
       order: 3
+    user:
+      name: spdata
+      password: spdata
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka:eureka@localhost:8761/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka/
   instance:
     prefer-ip-address: true #使用ip注册
     instance-id: ${spring.application.name}:${server.port}
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
 mybatis:
   type-aliases-package: com.spdata.oauth2.*.entity,com.spdata.common
   mapper-locations: classpath*:mapping/*.xml,classpath*:mapping/*/*.xml
