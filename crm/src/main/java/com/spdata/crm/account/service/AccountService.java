@@ -105,7 +105,6 @@ public class AccountService extends BaseService<AccountDao, Account> {
      */
     @Override
     public PageInfo<Account> findByPage(PageParameter<Account> pageParameter) {
-        PageHelper.startPage(pageParameter.getPagenum(), pageParameter.getPagesize());
         /**
          * 如果部门ID为空 则根据当前账户的部门进行查询
          */
@@ -113,8 +112,8 @@ public class AccountService extends BaseService<AccountDao, Account> {
             Account account = accountDao.findAccount(SecurityTool.getSecurityUserName());
             pageParameter.setParament(account);
         }
-        List<Account> list = accountDao.findByPage(pageParameter.getParament());
-        PageInfo<Account> pageInfo = new PageInfo<>(list);
+        PageHelper.startPage(pageParameter.getPagenum(), pageParameter.getPagesize());
+        PageInfo<Account> pageInfo = new PageInfo<>(accountDao.findByPage(pageParameter.getParament()));
         return pageInfo;
     }
 }
