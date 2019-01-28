@@ -32,7 +32,8 @@ eureka:
       user.name: ${spring.security.user.name}
       user.password: ${spring.security.user.password}
       management.context-path: ${server.servlet.path}/actuator
-#actuate 监控配置
+    home-page-url: ${server.servlet.path}
+  #actuate 监控配置
   server:
     servlet:
       context-path: ${server.servlet.path}
