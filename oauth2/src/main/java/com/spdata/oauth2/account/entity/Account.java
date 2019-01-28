@@ -1,5 +1,6 @@
 package com.spdata.oauth2.account.entity;
 
+import com.spdata.common.permission.permission;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -9,12 +10,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
 @Slf4j
 @Setter
 public class Account extends com.spdata.common.account.Account implements UserDetails {
+    private List<permission> permissions;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -29,10 +29,8 @@ public class Account implements Serializable {
     private String avatar;
     private int phone;
     private boolean is_del;
+
+
     private List<Role> roles;
-    @JSONField(serialize = false)
-    private List<Menu> menus;
-    @JSONField(serialize = false)
-    private List<permission> permissions;
 
 }
