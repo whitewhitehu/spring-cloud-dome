@@ -16,7 +16,7 @@
         <result property="is_del" column="is_del"/>
         <result property="phone" column="phone"></result>
     </resultMap>
-    <resultMap id="account_role" type="com.spdata.common.account.Account" extends="base_account">
+    <resultMap id="account_role" type="com.spdata.crm.account.entity.AccountVO" extends="base_account">
         <collection property="roles" javaType="java.util.List" select="findRolesByAccountID"
                     column="id=id">
             <id column="id" property="id"/>

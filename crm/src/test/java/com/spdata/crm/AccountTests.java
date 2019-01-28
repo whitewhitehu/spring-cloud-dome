@@ -3,6 +3,7 @@ package com.spdata.crm;
 import com.github.pagehelper.PageInfo;
 import com.spdata.common.account.Account;
 import com.spdata.common.base.PageParameter;
+import com.spdata.crm.account.entity.AccountVO;
 import com.spdata.crm.account.service.AccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -24,9 +25,9 @@ public class AccountTests {
     private AccountService accountService;
     @Test
     public void testPage() {
-        PageParameter<Account> accountPageParameter = new PageParameter<>();
+        PageParameter<AccountVO> accountPageParameter = new PageParameter<>();
         Account account = accountService.findAccount("root");
-        accountPageParameter.setParament(account);
+        accountPageParameter.setParament((AccountVO) account);
         PageInfo pageInfo = accountService.findByPage(accountPageParameter);
         log.error("a");
     }

@@ -29,8 +29,4 @@ public class Account implements Serializable {
     private String avatar;
     private int phone;
     private boolean is_del;
-
-
-    private List<Role> roles;
-
 }

@@ -1,5 +1,6 @@
 package com.spdata.crm.account.service;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.spdata.common.base.PageParameter;
@@ -7,6 +8,7 @@ import com.spdata.crm.account.dao.AccountDao;
 import com.spdata.common.account.Account;
 import com.spdata.common.base.BaseService;
 import com.spdata.common.role.Role;
+import com.spdata.crm.account.entity.AccountVO;
 import com.spdata.crm.tool.SecurityTool;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -21,7 +23,7 @@ import java.util.List;
  */
 @Slf4j
 @Service
-public class AccountService extends BaseService<AccountDao, Account> {
+public class AccountService extends BaseService<AccountDao, AccountVO> {
     @Autowired
     private AccountDao accountDao;
 
@@ -54,7 +56,7 @@ public class AccountService extends BaseService<AccountDao, Account> {
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public boolean save(Account entity) {
+    public boolean save(AccountVO entity) {
         try {
             accountDao.save(entity);
             accountDao.saveRole(entity.getId(), entity.getRoles());
@@ -84,7 +86,7 @@ public class AccountService extends BaseService<AccountDao, Account> {
      * @return
      */
     @Transactional(rollbackFor = Exception.class)
-    public boolean updateAccount(Account account) {
+    public boolean updateAccount(AccountVO account) {
         List<Role> roles = account.getRoles();
         boolean falg = false;
         falg = accountDao.update(account);
@@ -104,16 +106,18 @@ public class AccountService extends BaseService<AccountDao, Account> {
      * @return
      */
     @Override
-    public PageInfo<Account> findByPage(PageParameter<Account> pageParameter) {
+    public PageInfo<AccountVO> findByPage(PageParameter<AccountVO> pageParameter) {
         /**
          * 如果部门ID为空 则根据当前账户的部门进行查询
          */
         if (pageParameter.getParament() == null || pageParameter.getParament().getDeptId() == null) {
             Account account = accountDao.findAccount(SecurityTool.getSecurityUserName());
-            pageParameter.setParament(account);
+            String json = JSON.toJSONString(account);
+            AccountVO accountVO = JSON.parseObject(json, AccountVO.class);
+            pageParameter.setParament(accountVO);
         }
         PageHelper.startPage(pageParameter.getPagenum(), pageParameter.getPagesize());
-        PageInfo<Account> pageInfo = new PageInfo<>(accountDao.findByPage(pageParameter.getParament()));
+        PageInfo<AccountVO> pageInfo = new PageInfo<>(accountDao.findByPage(pageParameter.getParament()));
         return pageInfo;
     }
 }

@@ -3,6 +3,7 @@ package com.spdata.crm.account.dao;
 import com.spdata.common.account.Account;
 import com.spdata.common.base.BaseInterface;
 import com.spdata.common.role.Role;
+import com.spdata.crm.account.entity.AccountVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -14,21 +15,21 @@ import java.util.List;
  */
 @Mapper
 @Component
-public interface AccountDao extends BaseInterface<Account> {
+public interface AccountDao extends BaseInterface<AccountVO> {
     @Override
-    boolean update(@Param(value = "account") Account account);
+    boolean update(@Param(value = "account") AccountVO account);
 
     @Override
-    boolean save(@Param(value = "account") Account account);
+    boolean save(@Param(value = "account") AccountVO account);
 
     @Override
-    Account findByid(@Param(value = "account") Account account);
+    AccountVO findByid(@Param(value = "account") AccountVO account);
 
     @Override
-    boolean delect(@Param("account") Account account);
+    boolean delect(@Param("account") AccountVO account);
 
     @Override
-    List<Account> findByPage(@Param("account") Account account);
+    List<AccountVO> findByPage(@Param("account") AccountVO account);
 
     List<Role> findRolesByAccountID(@Param("id") int id);
 

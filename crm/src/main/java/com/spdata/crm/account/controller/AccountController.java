@@ -7,6 +7,7 @@ import com.spdata.common.base.BaseResul;
 import com.spdata.common.base.Basemessage;
 import com.spdata.common.base.PageParameter;
 import com.spdata.common.role.Role;
+import com.spdata.crm.account.entity.AccountVO;
 import com.spdata.crm.account.service.AccountService;
 import com.spdata.crm.role.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +46,7 @@ public class AccountController {
         try {
             Account account = new Account();
             account.setId(id);
-            account = accountService.findById(account);
+            account = accountService.findById((AccountVO) account);
             resul.setData(account);
         } catch (Exception e) {
             log.warn(e.getMessage());
@@ -63,7 +64,7 @@ public class AccountController {
      */
     @PostMapping(value = "/save")
     @PreAuthorize(value = "hasRole('ADMIN')")
-    public BaseResul save(@RequestBody Account account) {
+    public BaseResul save(@RequestBody AccountVO account) {
         BaseResul resul = new BaseResul();
         try {
             boolean falg = accountService.save(account);
@@ -87,7 +88,7 @@ public class AccountController {
     public BaseResul delect(Account account) {
         BaseResul resul = new BaseResul();
         try {
-            boolean falg = accountService.delect(account);
+            boolean falg = accountService.delect((AccountVO) account);
             resul.setData(falg);
         } catch (Exception e) {
             log.warn(e.getMessage());
@@ -105,12 +106,13 @@ public class AccountController {
      */
     @PostMapping(value = "/page")
     @PreAuthorize(value = "hasRole('ADMIN')")
-    public BaseResul Page(@RequestBody PageParameter<Account> accountPageParameter) {
+    public BaseResul Page(@RequestBody PageParameter<AccountVO> accountPageParameter) {
         BaseResul resul = new BaseResul();
         try {
             PageInfo pageInfo = accountService.findByPage(accountPageParameter);
             resul.setData(pageInfo);
         } catch (Exception e) {
+            e.printStackTrace();
             log.warn(e.getMessage());
             resul.setCode(Basemessage.error);
             resul.setMessage(Basemessage.error_message);
@@ -205,7 +207,7 @@ public class AccountController {
     }
 
     @PostMapping(value = "/update")
-    public BaseResul update(@RequestBody Account account) {
+    public BaseResul update(@RequestBody AccountVO account) {
         BaseResul resul = new BaseResul();
         try {
             boolean falg = accountService.updateAccount(account);
