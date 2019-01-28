@@ -21,6 +21,4 @@ public interface MenuDao extends BaseInterface<Menu> {
 
     List<Menu> TreeMenu(@Param(value = "username") String username);
 
-    List<Menu> TreeChildren(@Param(value = "id") Integer id, @Param(value = "username") String username);
-
 }

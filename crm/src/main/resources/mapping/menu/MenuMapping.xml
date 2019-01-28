@@ -58,15 +58,6 @@
             join role on (role.is_del = 0 and role.id = account_role.role_id)
             join role_menu on (role_menu.role_id = role.id)
             join menu on (menu.is_del = 0 and role_menu.menu_id = menu.id)
-            where account.username = #{username} and (menu.superior is null or menu.superior=0) GROUP BY role_menu.menu_id
-    </select>
-    <select id="TreeChildren" resultMap="TreeMenu">
-            select menu.*
-            from account
-            join account_role on (account.id = account_role.account_id and account.is_del = 0)
-            join role on (role.is_del = 0 and role.id = account_role.role_id)
-            join role_menu on (role_menu.role_id = role.id)
-            join menu on (menu.is_del = 0 and role_menu.menu_id = menu.id)
-            where account.username = #{username} and superior=#{id} GROUP BY role_menu.menu_id
+            where account.username = #{username}   GROUP BY role_menu.menu_id
     </select>
 </mapper>
