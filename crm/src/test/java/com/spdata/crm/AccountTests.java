@@ -23,6 +23,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class AccountTests {
     @Autowired
     private AccountService accountService;
+
     @Test
     public void testPage() {
         PageParameter<AccountVO> accountPageParameter = new PageParameter<>();
@@ -30,5 +31,6 @@ public class AccountTests {
         accountPageParameter.setParament((AccountVO) account);
         PageInfo pageInfo = accountService.findByPage(accountPageParameter);
         log.error("a");
+
     }
 }

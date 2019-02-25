@@ -91,4 +91,18 @@ public class DeptService extends BaseService<deptDao, Dept> {
     public boolean update(Dept dept) {
         return deptDao.update(dept);
     }
+
+    /**
+     * 更具名称判断部门是否存在
+     *
+     * @param dept
+     * @return
+     */
+    public boolean exist(Dept dept) {
+        Dept deptExist = deptDao.findByName(dept);
+        if (deptExist != null) {
+            return true;
+        }
+        return false;
+    }
 }

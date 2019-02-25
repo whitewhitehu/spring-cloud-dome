@@ -48,7 +48,7 @@
     <select id="findByPage" resultMap="BaseResultMap">
         select
         *
-        from dept
+        from sys_dict
         <where>
             <if test="isDel != null">and is_del=#{isDel} </if>
             <if test="group != null">and 'group' =#{group}</if>

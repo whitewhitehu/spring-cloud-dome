@@ -1,5 +1,6 @@
 package com.spdata.common.base;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface BaseInterface<T> {
     List<T> findByPage(T t);
 
     boolean update(T t);
+
+    boolean deltct(Serializable id);
 }

@@ -21,7 +21,7 @@ public class MenuService extends BaseService<MenuDao, Menu> {
     }
 
     /**
-     * 加缓存解决性能问题
+     * 获取当前用户的菜单信息
      *
      * @return
      */

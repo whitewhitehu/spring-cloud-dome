@@ -51,7 +51,7 @@ public class SysDictController {
      * @param parameter
      * @return
      */
-    @GetMapping(value = "/list")
+    @PostMapping(value = "/list")
     @PreAuthorize(value = "hasAuthority('ROOT')")
     public BaseResul list(@RequestBody PageParameter<SysDict> parameter) {
         BaseResul resul = new BaseResul();

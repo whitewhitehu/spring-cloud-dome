@@ -2,6 +2,7 @@ package com.spdata.oauth2.configurer.exceptiontranslator;
 
 import com.spdata.common.base.BaseResul;
 import com.spdata.common.base.Basemessage;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.security.oauth2.provider.error.DefaultWebResponseExceptionTranslator;
@@ -24,7 +25,7 @@ public class SpdataWebResponseExceptionTranslator extends DefaultWebResponseExce
             baseResul.setCode(Basemessage.error);
             baseResul.setMessage(e.getMessage());
         }
-        ResponseEntity resulEntity = new ResponseEntity(baseResul, responseEntity.getHeaders(), responseEntity.getStatusCode());
+        ResponseEntity resulEntity = new ResponseEntity(baseResul, responseEntity.getHeaders(), HttpStatus.OK);
         return resulEntity;
     }
 }

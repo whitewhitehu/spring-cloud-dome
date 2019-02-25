@@ -15,4 +15,6 @@ import java.util.List;
 @Repository
 public interface deptDao extends BaseInterface<Dept> {
     List<Dept> findDeptChild(Integer id);
+
+    Dept findByName(Dept dept);
 }

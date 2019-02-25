@@ -2,9 +2,8 @@ server:
   port: 8762
 logging:
   level:
-    root: warn
-    com.spdata: debug
-    org.springframework.security: debug
+    root: info
+    com.spdata.*.dao: debug
 spring:
   application:
     name: server-oauth2

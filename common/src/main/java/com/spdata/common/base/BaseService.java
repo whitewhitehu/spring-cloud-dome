@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -41,5 +42,9 @@ public abstract class BaseService<D extends BaseInterface<T>, T> {
         List<T> list = d.findByPage(t.getParament());
         PageInfo<T> pageInfo = new PageInfo<T>(list);
         return pageInfo;
+    }
+
+    public boolean delect(Serializable id) {
+        return d.deltct(id);
     }
 }

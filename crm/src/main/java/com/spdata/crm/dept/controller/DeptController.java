@@ -70,4 +70,18 @@ public class DeptController {
         }
         return resul;
     }
+
+    @PostMapping(value = "/exist")
+    public BaseResul exist(@RequestBody Dept dept) {
+        BaseResul resul = new BaseResul();
+        try {
+            boolean exist = deptService.exist(dept);
+            resul.setData(exist);
+        } catch (Exception e) {
+            e.printStackTrace();
+            resul.setCode(Basemessage.error);
+            resul.setMessage(Basemessage.error_system_message);
+        }
+        return resul;
+    }
 }
