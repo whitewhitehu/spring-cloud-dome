@@ -14,8 +14,6 @@ import java.util.List;
 @Mapper
 @Repository
 public interface SysDictDao extends BaseInterface<SysDict> {
-    @Override
-    SysDict insert(@Param(value = "sysDict") SysDict sysDict);
 
     @Override
     boolean update(@Param(value = "sysDict") SysDict sysDict);
@@ -23,4 +21,9 @@ public interface SysDictDao extends BaseInterface<SysDict> {
     @Override
     List<SysDict> findByPage(SysDict sysDict);
 
+    @Override
+    boolean save(@Param(value = "sysDict") SysDict sysDict);
+
+    @Override
+    boolean delect(SysDict sysDict);
 }

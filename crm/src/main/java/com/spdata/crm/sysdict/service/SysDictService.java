@@ -38,4 +38,14 @@ public class SysDictService extends BaseService<SysDictDao, SysDict> {
     public boolean update(SysDict sysDict) {
         return sysDictDao.update(sysDict);
     }
+
+    @Override
+    public boolean delect(SysDict sysDict) {
+        if (sysDict != null) {
+            if (sysDict.getId() != null) {
+                return super.delect(sysDict);
+            }
+        }
+        return false;
+    }
 }

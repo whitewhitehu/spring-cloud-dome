@@ -34,7 +34,7 @@ public class SysDictController {
     public BaseResul save(@RequestBody SysDict sysDict) {
         BaseResul resul = new BaseResul();
         try {
-            SysDict dict = sysDictService.insert(sysDict);
+            boolean dict = sysDictService.save(sysDict);
             resul.setData(dict);
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,6 +79,28 @@ public class SysDictController {
         BaseResul resul = new BaseResul();
         try {
             boolean falg = sysDictService.update(sysDict);
+            resul.setData(falg);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.warning(e.getMessage());
+            resul.setCode(Basemessage.error);
+            resul.setMessage(Basemessage.error_system_message);
+        }
+        return resul;
+    }
+
+    /**
+     * 删除字典
+     *
+     * @param sysDict
+     * @return
+     */
+    @PostMapping(value = "/delect")
+    @PreAuthorize(value = "hasAuthority('ROOT')")
+    public BaseResul delect(@RequestBody SysDict sysDict) {
+        BaseResul resul = new BaseResul();
+        try {
+            boolean falg = sysDictService.delect(sysDict);
             resul.setData(falg);
         } catch (Exception e) {
             e.printStackTrace();

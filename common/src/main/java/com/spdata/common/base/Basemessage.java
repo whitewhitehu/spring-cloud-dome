@@ -19,4 +19,10 @@ public class Basemessage {
     public final static Integer Timeout = 5003;
     //请求超时
     public final static String Timeout_message = "请求超时";
+
+
+    //4004
+    public final static String NoHandler = "找不到这个地址";
+
+
 }

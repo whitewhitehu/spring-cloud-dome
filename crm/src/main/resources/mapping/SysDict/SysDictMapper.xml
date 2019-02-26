@@ -19,14 +19,12 @@
     </sql>
 
     <!--auto generated Code-->
-    <insert id="insert" useGeneratedKeys="true" keyProperty="sysDict.id">
+    <insert id="save">
         INSERT INTO sys_dict (
-            id,
             name,
-            group,
+            `group`,
             value
         ) VALUES (
-            #{sysDict.id,jdbcType=INTEGER},
             #{sysDict.name,jdbcType=VARCHAR},
             #{sysDict.group,jdbcType=VARCHAR},
             #{sysDict.value,jdbcType=VARCHAR}
@@ -38,7 +36,7 @@
         UPDATE sys_dict
         <set>
             <if test="sysDict.name != null">name= #{sysDict.name,jdbcType=VARCHAR},</if>
-            <if test="sysDict.group != null">"group"= #{sysDict.group,jdbcType=VARCHAR},</if>
+            <if test="sysDict.group != null">`group`= #{sysDict.group,jdbcType=VARCHAR},</if>
             <if test="sysDict.value != null">value= #{sysDict.value,jdbcType=VARCHAR},</if>
             <if test="sysDict.isDel != null">is_del= #{sysDict.isDel,jdbcType=INTEGER}</if>
         </set>
@@ -50,9 +48,16 @@
         *
         from sys_dict
         <where>
-            <if test="isDel != null">and is_del=#{isDel} </if>
+            <if test="isDel != null">and is_del=#{isDel}</if>
+            <if test="isDel == null">and is_del=0</if>
             <if test="group != null">and 'group' =#{group}</if>
         </where>
     </select>
+
+    <delete id="delect">
+        <if test="id != null">
+            update sys_dict set is_del=1 where id=#{id}
+        </if>
+    </delete>
 </mapper>
 
