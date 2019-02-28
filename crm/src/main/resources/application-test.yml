@@ -23,6 +23,20 @@ spring:
     user:
       name: spdata
       password: spdata
+  freemarker:
+    template-loader-path: classpath:/template
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    suffix: .ftl
+  #热部署
+  devtools:
+    restart:
+      additional-paths: src/main/java
+    livereload:
+      enabled: true
 security:
   oauth2:
     client:

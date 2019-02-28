@@ -31,6 +31,9 @@ spring:
     user:
       name: spdata
       password: spdata
+  devtools:
+    livereload:
+      enabled: true
 eureka:
   client:
     serviceUrl:
