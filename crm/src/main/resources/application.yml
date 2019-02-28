@@ -2,7 +2,7 @@ logging:
   level:  # 日志级别
     root: info
     com.spdata: debug
-    org.springframework.security: info
+    org.springframework.security: debug
 server:
   port: 8763
   servlet:

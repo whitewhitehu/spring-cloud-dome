@@ -15,8 +15,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
+ * @author yangqifang
  * @描述:
- * @auther yangqifang
  * @data 2018/12/1113:20
  **/
 @Slf4j
