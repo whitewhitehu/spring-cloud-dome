@@ -12,7 +12,7 @@
     <artifactId>modules</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>Admin-Serverl</module>
+        <module>Admin-Server</module>
         <module>config</module>
     </modules>
     <properties>

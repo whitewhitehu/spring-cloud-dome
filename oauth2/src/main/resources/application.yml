@@ -1,9 +1,12 @@
 server:
   port: 8762
+  servlet:
+    context-path: /auth/
 logging:
   level:
-    root: info
-    com.spdata.*.dao: debug
+    root: warn
+    com.spdata: debug
+    org.springframework.security: debug
 spring:
   application:
     name: server-oauth2
@@ -34,6 +37,16 @@ spring:
   devtools:
     livereload:
       enabled: true
+    restart:
+      exclude: template/**
+  freemarker:
+    template-loader-path: classpath:/template
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    suffix: .ftl
 eureka:
   client:
     serviceUrl:

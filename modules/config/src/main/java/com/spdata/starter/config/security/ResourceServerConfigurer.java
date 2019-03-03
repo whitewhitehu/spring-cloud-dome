@@ -1,8 +1,9 @@
-package com.spdata.crm.configuration;
+package com.spdata.starter.config.security;
 
-import com.spdata.crm.configuration.entrypoint.SpdataAuthenticationEntryPoint;
-import com.spdata.crm.configuration.handler.SpdataAccessDeniedHandler;
+import com.spdata.starter.config.web.MvcConfiguration;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.OAuth2ClientProperties;
@@ -34,6 +35,12 @@ import java.util.List;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan(basePackages = {"com.spdata.common"})
 public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
+    Logger logger = LoggerFactory.getLogger(MvcConfiguration.class);
+
+    {
+        logger.info("加载资源服务器配置");
+    }
+
     @Value("${security.oauth2.client.id}")
     private String ClientID;
     @Value("${security.oauth2.client.client-secret}")

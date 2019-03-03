@@ -20,7 +20,7 @@ public interface PermissionDao extends BaseInterface<permission> {
 
     @Override
     boolean delect(@Param(value = "permission") permission permission);
-
+    @Override
     boolean update(@Param(value = "permission") permission permission);
 
 }

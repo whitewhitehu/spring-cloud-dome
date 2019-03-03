@@ -59,32 +59,22 @@ public class WEBSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(accountService);
+        super.configure(auth);
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        super.configure(web);
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.
-                formLogin()
-                .permitAll()
+                formLogin().loginPage("/oauth2/login").failureUrl("/oauth2/login?error=true").permitAll()
                 .and()
-                .csrf()
-                .disable()
-                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //如果需要使用授权码模式请注释本条代码
-                .and()
-                .authorizeRequests()
-                .antMatchers("/actuator/**")
-                .permitAll()
+                .csrf().disable()
+                .authorizeRequests().antMatchers("/actuator/**", "/assets/**").permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest()
-                .authenticated()
-                .and();
+                .authenticated();
+        super.configure(http);
     }
 }
 

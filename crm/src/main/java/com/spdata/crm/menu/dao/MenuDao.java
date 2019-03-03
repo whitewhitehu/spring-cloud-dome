@@ -17,6 +17,7 @@ public interface MenuDao extends BaseInterface<Menu> {
     @Override
     boolean delect(@Param("menu") Menu menu);
 
+    @Override
     boolean update(@Param(value = "menu") Menu menu);
 
     List<Menu> TreeMenu(@Param(value = "username") String username);
