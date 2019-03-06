@@ -10,6 +10,7 @@ import com.spdata.common.role.Role;
 import com.spdata.crm.account.entity.AccountVO;
 import com.spdata.crm.account.service.AccountService;
 import com.spdata.crm.role.service.RoleService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -141,7 +142,7 @@ public class AccountController {
     }
 
     /**
-     * 查询当前用户信息接口
+     * 查询当前用户信息(基本信息+权限)接口
      *
      * @param user
      * @return

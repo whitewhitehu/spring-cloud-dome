@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ToString
@@ -11,6 +12,6 @@ import java.util.List;
 @Setter
 public class RoleInput {
     private Integer RoleId;
-    private List<Integer> MenuId;
-    private List<Integer> PermissionId;
+    private List<Integer> MenuId = new ArrayList<>();
+    private List<Integer> PermissionId = new ArrayList<>();
 }

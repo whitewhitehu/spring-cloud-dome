@@ -23,7 +23,7 @@
 
         .bg-img {
             position: absolute;
-            top: 49px;
+            top: 0px;
             z-index: 0;
             left: 0;
             right: 0;

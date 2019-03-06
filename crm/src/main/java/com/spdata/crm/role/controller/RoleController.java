@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+/**
+ * @author yangqifang
+ */
 @Slf4j
 @RestController
 @RequestMapping(value = "/role")
@@ -31,10 +34,10 @@ public class RoleController {
     public BaseResul save(@RequestBody Role role) {
         BaseResul resul = new BaseResul();
         try {
-            boolean ifSave = roleService.save(role);
-            resul.setData(ifSave);
+            boolean ifSaveSucceed = roleService.save(role);
+            resul.setData(ifSaveSucceed);
         } catch (Exception e) {
-            log.warn(e.getMessage());
+            e.getMessage();
             resul.setCode(Basemessage.error);
             resul.setMessage(Basemessage.error_message);
         }
@@ -55,7 +58,7 @@ public class RoleController {
             boolean ifUpdate = roleService.delect(role);
             resul.setData(ifUpdate);
         } catch (Exception e) {
-            log.warn(e.getMessage());
+            e.getMessage();
             resul.setCode(Basemessage.error);
             resul.setMessage(Basemessage.error_message + e.getMessage());
         }

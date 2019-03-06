@@ -24,15 +24,15 @@ import java.io.PrintWriter;
 public class SpdataAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-        BaseResul baseResul = new BaseResul();
-        baseResul.setCode(Basemessage.ParameterError);
-        baseResul.setMessage("无效token:" + e.getLocalizedMessage());
-        baseResul.setData(null);
         PrintWriter writer = null;
-        httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         httpServletResponse.setContentType("application/json");
         httpServletResponse.setCharacterEncoding("UTF-8");
         try {
+            BaseResul baseResul = new BaseResul();
+            baseResul.setCode(Basemessage.TokenTimeOutCode);
+            baseResul.setMessage("无效token:" + e.getLocalizedMessage());
+            baseResul.setData(null);
             writer = httpServletResponse.getWriter();
             writer.write(JSON.toJSONString(baseResul));
         } catch (Exception e1) {

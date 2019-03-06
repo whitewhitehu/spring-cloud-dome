@@ -4,13 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * @author yangqifang
  */
 @Getter
 @Setter
 @ToString
-public class SysDict {
+public class SysDict implements Serializable {
 
     private Integer id;
 

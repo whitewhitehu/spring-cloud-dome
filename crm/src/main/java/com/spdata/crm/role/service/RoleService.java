@@ -2,6 +2,8 @@ package com.spdata.crm.role.service;
 
 import com.spdata.common.base.BaseService;
 import com.spdata.common.role.Role;
+import com.spdata.crm.menu.dao.MenuDao;
+import com.spdata.crm.permission.dao.PermissionDao;
 import com.spdata.crm.role.dao.RoleDao;
 import com.spdata.crm.role.input.RoleInput;
 import com.spdata.crm.tool.SecurityTool;
@@ -15,6 +17,10 @@ import java.util.List;
 public class RoleService extends BaseService<RoleDao, Role> {
     @Autowired
     private RoleDao roleDao;
+    @Autowired
+    private PermissionDao permissionDao;
+    @Autowired
+    private MenuDao menuDao;
 
     /**
      * 查询当前用户的角色信息
@@ -42,7 +48,7 @@ public class RoleService extends BaseService<RoleDao, Role> {
      * @param roleInput
      * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public boolean insertPermission(RoleInput roleInput) {
         return roleDao.insertPermission(roleInput);
     }
@@ -53,7 +59,7 @@ public class RoleService extends BaseService<RoleDao, Role> {
      * @param roleInput
      * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public boolean delectRoleMenu(RoleInput roleInput) {
         return roleDao.delectRoleMenu(roleInput);
     }
@@ -64,7 +70,7 @@ public class RoleService extends BaseService<RoleDao, Role> {
      * @param roleInput
      * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public boolean delectRolePermission(RoleInput roleInput) {
         return roleDao.delectRolePermission(roleInput);
     }
@@ -73,4 +79,22 @@ public class RoleService extends BaseService<RoleDao, Role> {
         return roleDao.findRoleMenu(roleid);
     }
 
+    /**
+     * 删除角色
+     *
+     * @param role
+     * @return
+     */
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public boolean delect(Role role) {
+        if (role.getId() != 1) {
+//            RoleInput roleInput = new RoleInput();
+//            roleInput.setRoleId(role.getId());
+//            this.delectRolePermission(roleInput);
+//            this.delectRoleMenu(roleInput);
+            return roleDao.delect(role);
+        }
+        return false;
+    }
 }

@@ -12,7 +12,7 @@ zuul:
   routes:
     server-oauth2:
       serverID: server-oauth2
-      path: /oauth/**
+      path: /auth/**
       strip-prefix: false
     server-crm:
       serverID: server-crm

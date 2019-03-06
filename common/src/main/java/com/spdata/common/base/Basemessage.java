@@ -20,6 +20,8 @@ public class Basemessage {
     //请求超时
     public final static String Timeout_message = "请求超时";
 
+    public final static Integer TokenTimeOutCode = 5004;
+    public final static String TokenTimeOut = "TOKEN失效";
 
     //4004
     public final static String NoHandler = "找不到这个地址";

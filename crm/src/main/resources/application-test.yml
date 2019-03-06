@@ -42,11 +42,11 @@ security:
     client:
       id: spdata
       client-secret: secret
-      user-authorization-uri: http://localhost:8762/oauth/authorize
+      user-authorization-uri: http://localhost:8762/auth/oauth/authorize
       grant-type: password
       scope: all
-      access-token-uri: http://localhost:8762/oauth/token
+      access-token-uri: http://localhost:8762/auth/oauth/token
       resource:
-        userInfoUri: http://localhost:8762/user
+        userInfoUri: http://localhost:8762/auth/user
       authorization:
-        check-token-access: http://localhost:8762/oauth/check_token
+        check-token-access: http://localhost:8762/auth/oauth/check_token
