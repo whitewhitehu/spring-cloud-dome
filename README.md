@@ -2,18 +2,19 @@
 
 ### 1.eureka模块-服务注册中心
 ### 2.oauth2模块-认证授权服务
+    *以加入自定义的响应式 登陆,授权界面 移动端,PC端已完成适配
 ### 3.gateway模块-网关(主要用于路由转发)
 ### 3.crm模块-基础服务
-### 4.common模块-目前主要存用与存放实体类
-### CRM模块功能
-
-* 1.用户管理
-* 2.部门管理
-* 3.菜单管理
-* 4.角色管理
-* 5.权限管理
-
-
+    * 1.用户管理
+    * 2.部门管理
+    * 3.菜单管理
+    * 4.角色管理
+    * 5.权限管理
+    * 6.图表生成
+        ####目前只支持 折线图 柱状图生成 后续会加入更多的图形功能
+### 4.common模块
+    *主要用于存放实体类,dao层模板,service层模板
+### 功能列表
 
 
 * 系统与前端的数据交互主要采用Restful Api 的方式实现 
@@ -21,7 +22,13 @@
 ### spring boot 版本
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.0.4.RELEASE</version>
+            <version>2.0.8.RELEASE</version>
+![授权码登陆界面](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(4).jpg)
+![](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(5).jpg)
+![](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(6).jpg)
+![](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(2).jpg)
+![](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(1).jpg)
+![](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(3).jpg)
 ### 部署
 * 1.安装mysql8数据库 将项目中的webdb.sql脚本文件导入到数据库中 PS:mysql其他版本没试过 我电脑上使用的是mysql 8.0.12版本
 * 2.修改oauth2认证授权服务中的数据库连接地址密码
