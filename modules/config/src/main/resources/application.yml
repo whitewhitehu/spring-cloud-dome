@@ -1,6 +1,38 @@
 server:
   port: 10001
-
 spring:
   application:
     name: cloud-config-server
+  cloud:
+    config:
+      server:
+        bootstrap: true
+        jdbc:
+          sql: SELECT `KEY`, `VALUE` from PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/webdb?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 712yqf
+    initialSize: 5
+    minIdle: 1
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 1
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,slf4j
+  profiles:
+    active: jdbc
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://spdata:spdata@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
