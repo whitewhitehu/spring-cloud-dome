@@ -31,9 +31,6 @@ spring:
   security:
     filter:
       order: 3
-    user:
-      name: spdata
-      password: spdata
   devtools:
     livereload:
       enabled: true
@@ -52,8 +49,8 @@ eureka:
     prefer-ip-address: true #使用ip注册
     instance-id: ${spring.application.name}:${server.port}
     metadata-map:
-      user.name: ${spring.security.user.name}
-      user.password: ${spring.security.user.password}
+      management.context-path: ${server.servlet.path}/actuator
+    home-page-url: ${server.servlet.path}
 mybatis:
   type-aliases-package: com.spdata.oauth2.*.entity,com.spdata.common
   mapper-locations: classpath*:mapping/*.xml,classpath*:mapping/*/*.xml

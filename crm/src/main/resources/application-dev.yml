@@ -19,10 +19,6 @@ spring:
     validationQuery: select 1
     # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
     filters: stat,wall,slf4j
-  security:
-    user:
-      name: spdata
-      password: spdata
   freemarker:
     template-loader-path: classpath:/template
     cache: false

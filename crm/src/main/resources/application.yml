@@ -21,17 +21,15 @@ pagehelper:
   helper-dialect: mysql
 spring:
   profiles:
-    active: test
+    active: dev
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka/
+      defaultZone: http://spdata:spdata@localhost:8761/eureka/
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${server.port}
     metadata-map:
-      user.name: ${spring.security.user.name}
-      user.password: ${spring.security.user.password}
       management.context-path: ${server.servlet.path}/actuator
     home-page-url: ${server.servlet.path}
   #actuate 监控配置
