@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      label: master
+      profile: dev
+      uri: http://127.0.0.1:10001

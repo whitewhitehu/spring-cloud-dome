@@ -43,7 +43,7 @@
     <update id="update">
         <if test="id != null">
             update properties set
-            <trim prefix="(" suffix=")" suffixOverrides=",">
+            <trim suffixOverrides=",">
                 <if test="key != null and key != ''">`key`=#{key},</if>
                 <if test="value != null and value != ''">value=#{value},</if>
                 <if test="label != null and label != ''">label=#{label},</if>
@@ -53,7 +53,7 @@
             where id =#{id}
         </if>
     </update>
-    <select id="delect" resultType="boolean">
+    <delete id="delect">
       delete from properties where id=#{id}
-    </select>
+    </delete>
 </mapper>
