@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.spdata</groupId>
-    <artifactId>crm</artifactId>
+    <artifactId>admin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>crm</name>
+    <name>admin</name>
     <description>后台管理</description>
 
     <parent>

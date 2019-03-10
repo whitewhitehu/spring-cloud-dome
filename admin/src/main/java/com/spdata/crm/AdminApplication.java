@@ -10,10 +10,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @SpringBootApplication(exclude = {UserDetailsServiceAutoConfiguration.class})
 @EnableEurekaClient
-public class CrmApplication {
+public class AdminApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CrmApplication.class, args);
+        SpringApplication.run(AdminApplication.class, args);
     }
 
 }

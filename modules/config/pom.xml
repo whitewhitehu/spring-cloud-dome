@@ -11,7 +11,7 @@
     <groupId>com.spdata</groupId>
     <artifactId>config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring cloud 服务配置中心</name>
+    <name>config-server</name>
     <description>spring cloud 服务配置</description>
     <packaging>jar</packaging>
     <properties>

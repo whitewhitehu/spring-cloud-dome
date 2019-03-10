@@ -10,7 +10,7 @@
     <groupId>com.spdata</groupId>
     <artifactId>admin-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>admin-server</name>
+    <name>admin-server监控服务</name>
     <description>监控服务</description>
 
     <properties>
