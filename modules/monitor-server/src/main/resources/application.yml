@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: Admin-Server
+  security:
+    oauth2:
+      client:
+        registration:
+          spdata:
+            provider: spdata
+            clientId: spdata
+            clientSecret: spdata
+            client-name: spdata
+            AuthorizationGrantType: authorization_code
+            redirect-uri-template: "{baseUrl}/login/oauth2/callback/{registrationId}"
+            scope: all
+        provider:
+          spdata:
+            authorization-uri: http://localhost:8762/auth/oauth/authorize
+            token-uri: http://localhost:8762/auth/oauth/token
+            userInfoUri: http://localhost:8762/auth/oauth/user/info
+server:
+  port: 9000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://spdata:spdata@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+    metadata-map:
+      user.name: "spdata"
+      user.password: "spdata"
+
+logging:
+  level:
+    root: info
+    org.springframework.security: debug

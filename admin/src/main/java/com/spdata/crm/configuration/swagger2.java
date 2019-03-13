@@ -15,7 +15,7 @@ public class swagger2 {
 
     public ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("CRM基础API")
+                .title("ADMIN基础API")
                 .version("test version 0.0.1")
                 .build();
     }
@@ -25,7 +25,6 @@ public class swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-//                .apis(RequestHandlerSelectors.basePackage("com.spdata.crm"))
                 .paths(PathSelectors.any())
                 .build();
     }

@@ -31,4 +31,8 @@ public class AccountService extends BaseService<AccountDao, Account> implements 
     public List<Role> findRole(Integer userid) {
         return accountDao.findRole(userid);
     }
+
+    public com.spdata.common.account.Account findByBaseInfo(String username) {
+        return accountDao.findByBaseInfo(username);
+    }
 }

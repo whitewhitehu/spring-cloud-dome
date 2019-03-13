@@ -72,7 +72,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     @Bean
     public DefaultTokenServices tokenServices() {
         DefaultTokenServices tokenServices = new DefaultTokenServices();
-        tokenServices.setTokenStore(InMemorytokenStore());
+        tokenServices.setTokenStore(jdbcTokenStore());
         tokenServices.setTokenEnhancer(spDataTokenEnhancer);
         tokenServices.setAuthenticationManager(authenticationManager);
         return tokenServices;
@@ -95,7 +95,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()")
                 //检查token接口 全部人可以访问
-                .checkTokenAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()")
                 .allowFormAuthenticationForClients();
     }
 

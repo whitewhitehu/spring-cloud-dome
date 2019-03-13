@@ -5,6 +5,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * 获取授权信息工具类
+ *
+ * @author yangqifang
  */
 public class SecurityTool {
     /**

@@ -13,8 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
+ * @author yangqifang
  * @描述:
- * @auther yangqifang
  * @data 2019/1/914:25
  **/
 @Log4j2

@@ -23,12 +23,13 @@ zuul:
   sensitive-headers: Access-Control-Allow-Origin,Access-Control-Allow-Methods
   strip-prefix: false
   host:
-    connect-timeout-millis: 122000
-    socket-timeout-millis: 122000
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
 server:
   port: 80
 logging:
   level:
+    root: info
     org.springframework.cloud.netflix.zuul: debug
 hystrix:
   command:
@@ -36,7 +37,4 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 122000
-ribbon:
-  ReadTimeout: 122000
-  SocketTimeout: 122000
+            timeoutInMilliseconds: 10000

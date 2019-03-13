@@ -19,4 +19,6 @@ public interface AccountDao extends BaseInterface<Account> {
     List<Role> findRole(@Param("userid") Integer userid);
 
     Set<permission> findPermission(@Param("roleid") Set<Integer> roleid);
+
+    com.spdata.common.account.Account findByBaseInfo(String username);
 }

@@ -19,8 +19,20 @@
             <result column="pmn_is_del" property="is_del"></result>
         </collection>
     </resultMap>
+    <resultMap id="AccountBaseInfo" type="com.spdata.common.account.Account">
+        <result column="username" property="username"></result>
+        <result column="mailbox" property="mailbox"></result>
+        <result column="givename" property="givename"></result>
+        <result column="country" property="country"></result>
+        <result column="avatar" property="avatar"></result>
+        <result property="phone" column="phone"></result>
+    </resultMap>
+    <select id="findByBaseInfo" resultMap="AccountBaseInfo">
+        select username,mailbox,givename,country,avatar,phone
+         from account where is_del=0 and username=#{username}
+    </select>
     <select id="findByAccount" resultMap="login_account">
-        select ac.*,
+        select ac.id,ac.username,ac.password,
                pmn.id as "pmn_id",
                pmn.name as "pmn_name",
                pmn.value as "pmn_value",

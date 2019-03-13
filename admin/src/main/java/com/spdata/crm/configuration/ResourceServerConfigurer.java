@@ -38,7 +38,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     private String ClientID;
     @Value("${security.oauth2.client.client-secret}")
     private String ClientSecret;
-    @Value("${security.oauth2.client.authorization.check-token-access}")
+    @Value("${security.oauth2.authorization.check-token-access}")
     private String CheckTokenAccessURL;
     @Autowired
     OAuth2ClientProperties oAuth2ClientProperties;
@@ -58,7 +58,6 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
         converter.setSigningKey("spdata-yang");
         return converter;
     }
-
     /**
      * 这个暂时没用 配置还要研究一下
      *
