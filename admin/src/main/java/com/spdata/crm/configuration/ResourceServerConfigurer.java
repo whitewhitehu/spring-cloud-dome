@@ -58,6 +58,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
         converter.setSigningKey("spdata-yang");
         return converter;
     }
+
     /**
      * 这个暂时没用 配置还要研究一下
      *
@@ -115,10 +116,10 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     public String[] permitAll() {
         List<String> stringList = new ArrayList<>();
         stringList.add("/admin/webjars/**");
-        stringList.add("/admin/swagger-ui.html");
+        stringList.add("/admin/doc.html");
         stringList.add("/admin/swagger-resources/**");
         stringList.add("/admin/v2/api-docs");
-        stringList.add("/admin/actuator/**");
+//        stringList.add("/admin/actuator/**");
         String[] permitAll = new String[stringList.size()];
         stringList.toArray(permitAll);
         return permitAll;
@@ -127,6 +128,6 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(permitAll()).permitAll();
+                .antMatchers(permitAll()).permitAll().anyRequest().authenticated();
     }
 }
