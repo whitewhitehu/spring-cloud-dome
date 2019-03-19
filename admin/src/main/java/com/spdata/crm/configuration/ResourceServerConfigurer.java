@@ -1,7 +1,7 @@
 package com.spdata.crm.configuration;
 
-import com.spdata.crm.configuration.entrypoint.SpdataAuthenticationEntryPoint;
-import com.spdata.crm.configuration.handler.SpdataAccessDeniedHandler;
+import com.spdata.common.autoconfig.oauth.SpdataAccessDeniedHandler;
+import com.spdata.common.autoconfig.oauth.SpdataAuthenticationEntryPoint;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

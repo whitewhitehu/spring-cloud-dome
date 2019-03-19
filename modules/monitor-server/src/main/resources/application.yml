@@ -15,9 +15,9 @@ spring:
             scope: all
         provider:
           spdata:
-            authorization-uri: http://localhost:8762/auth/oauth/authorize
-            token-uri: http://localhost:8762/auth/oauth/token
-            userInfoUri: http://localhost:8762/auth/oauth/user/info
+            authorization-uri: http://127.0.0.1:8762/auth/oauth/authorize
+            token-uri: http://127.0.0.1:8762/auth/oauth/token
+            userInfoUri: http://127.0.0.1:8765/resources/user/info
 server:
   port: 9000
 eureka:
@@ -33,5 +33,5 @@ eureka:
 
 logging:
   level:
-    root: info
+    root: warn
     org.springframework.security: debug
