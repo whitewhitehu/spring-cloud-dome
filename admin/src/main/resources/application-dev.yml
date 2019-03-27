@@ -44,5 +44,6 @@ security:
       access-token-uri: http://localhost:8762/auth/oauth/token
     resource:
       userInfoUri: http://localhost:8762/auth/user
+      id: spdata
     authorization:
       check-token-access: http://localhost:8762/auth/oauth/check_token

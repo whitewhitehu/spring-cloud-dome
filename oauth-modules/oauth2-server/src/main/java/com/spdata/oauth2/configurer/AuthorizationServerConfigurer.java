@@ -1,7 +1,5 @@
 package com.spdata.oauth2.configurer;
 
-import com.spdata.common.autoconfig.SpdataAutoConfig;
-import com.spdata.common.autoconfig.web.webConfig;
 import com.spdata.oauth2.account.service.AccountService;
 import com.spdata.oauth2.configurer.enhancer.SpDataTokenEnhancer;
 import com.spdata.oauth2.configurer.exceptiontranslator.SpdataWebResponseExceptionTranslator;
@@ -121,17 +119,18 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory() // 使用in-memory存储
-                // client_id
-                .withClient("spdata")
-                // client_secret
-                .secret("secret")
-                // 该client允许的授权类型
-                .authorizedGrantTypes("authorization_code", "password")
-                //重定向域名
-                .redirectUris("http://127.0.0.1:9000", "https://www.baidu.com/", "http://baidu.com")
-                // 允许的授权范围
-                .scopes("all");
+        clients.withClientDetails(jdbcClientDetailsService());
+//        clients.inMemory() // 使用in-memory存储
+//                // client_id
+//                .withClient("spdata")
+//                // client_secret
+//                .secret("secret")
+//                // 该client允许的授权类型
+//                .authorizedGrantTypes("authorization_code", "password")
+//                //重定向域名
+//                .redirectUris("http://127.0.0.1:9000", "https://www.baidu.com/", "http://baidu.com")
+//                // 允许的授权范围
+//                .scopes("all");
     }
 
     /**

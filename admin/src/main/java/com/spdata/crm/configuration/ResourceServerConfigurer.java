@@ -104,6 +104,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources
                 .tokenServices(resourceTokenServices())
+                .resourceId("spdata")
                 .authenticationEntryPoint(authenticationEntryPoint)
                 .accessDeniedHandler(accessDeniedHandler);
     }
@@ -119,7 +120,6 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
         stringList.add("/admin/doc.html");
         stringList.add("/admin/swagger-resources/**");
         stringList.add("/admin/v2/api-docs");
-//        stringList.add("/admin/actuator/**");
         String[] permitAll = new String[stringList.size()];
         stringList.toArray(permitAll);
         return permitAll;

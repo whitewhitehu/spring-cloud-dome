@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spdata.resource.server.clientdetails.mapper.ClientDetailsMapper">
+
+    <insert id="save">
+        insert into oauth_client_details
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            client_id,
+            client_secret,
+            <if test="scope != null and scope != ''">scope,</if>
+            <if test="resourceIds != null and resourceIds != ''">resource_ids,</if>
+            <if test="authorizedGrantTypes != null and authorizedGrantTypes != ''">authorized_grant_types,</if>
+            <if test="webServerRedirectUri != null">web_server_redirect_uri,</if>
+        </trim>
+        value
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="clientId != null and clientId != ''">#{clientId} ,</if>
+            <if test="clientSecret != null and clientSecret != ''">#{clientSecret} ,</if>
+            <if test="scope != null and scope != ''">'read',</if>
+            <if test="resourceIds != null and resourceIds != ''">#{resourceIds} ,</if>
+            <if test="authorizedGrantTypes != null and authorizedGrantTypes != ''">'authorization_code',</if>
+            <if test="webServerRedirectUri != null">#{webServerRedirectUri} ,</if>
+        </trim>
+    </insert>
+</mapper>
