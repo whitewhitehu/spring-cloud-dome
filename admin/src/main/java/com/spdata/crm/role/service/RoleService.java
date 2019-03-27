@@ -6,7 +6,7 @@ import com.spdata.crm.menu.dao.MenuDao;
 import com.spdata.crm.permission.dao.PermissionDao;
 import com.spdata.crm.role.dao.RoleDao;
 import com.spdata.crm.role.input.RoleInput;
-import com.spdata.crm.tool.SecurityTool;
+import com.spdata.crm.tool.SpringOauth2SecurityTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +28,7 @@ public class RoleService extends BaseService<RoleDao, Role> {
      * @return
      */
     public List<Role> findAccountRole() {
-        return roleDao.findAccountRole(SecurityTool.getSecurityUserName());
+        return roleDao.findAccountRole(SpringOauth2SecurityTool.getSecurityUserName());
     }
 
     /**

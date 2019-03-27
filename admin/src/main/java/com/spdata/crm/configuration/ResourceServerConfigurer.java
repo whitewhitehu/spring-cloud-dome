@@ -103,8 +103,8 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources
+                .resourceId("spdata").stateless(false)
                 .tokenServices(resourceTokenServices())
-                .resourceId("spdata")
                 .authenticationEntryPoint(authenticationEntryPoint)
                 .accessDeniedHandler(accessDeniedHandler);
     }
@@ -128,6 +128,6 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(permitAll()).permitAll().anyRequest().authenticated();
+                .antMatchers(permitAll()).permitAll().anyRequest().access("#oauth2.hasScope('all')");
     }
 }

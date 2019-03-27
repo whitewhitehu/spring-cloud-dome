@@ -3,7 +3,7 @@ package com.spdata.crm.menu.dervice;
 import com.spdata.common.base.BaseService;
 import com.spdata.common.menu.Menu;
 import com.spdata.crm.menu.dao.MenuDao;
-import com.spdata.crm.tool.SecurityTool;
+import com.spdata.crm.tool.SpringOauth2SecurityTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class MenuService extends BaseService<MenuDao, Menu> {
      * @return
      */
     public List<Menu> TreeMenu() {
-        List<Menu> menus = menuDao.TreeMenu(SecurityTool.getSecurityUserName());
+        List<Menu> menus = menuDao.TreeMenu(SpringOauth2SecurityTool.getSecurityUserName());
         int minid = menus.stream().min((o1, o2) -> o1.getSuperior().compareTo(o2.getSuperior())).get().getSuperior();
         menus = MenuGroup(menus, minid);
         return menus;

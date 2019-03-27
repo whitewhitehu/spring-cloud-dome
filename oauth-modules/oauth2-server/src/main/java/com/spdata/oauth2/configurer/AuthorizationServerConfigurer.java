@@ -120,17 +120,6 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.withClientDetails(jdbcClientDetailsService());
-//        clients.inMemory() // 使用in-memory存储
-//                // client_id
-//                .withClient("spdata")
-//                // client_secret
-//                .secret("secret")
-//                // 该client允许的授权类型
-//                .authorizedGrantTypes("authorization_code", "password")
-//                //重定向域名
-//                .redirectUris("http://127.0.0.1:9000", "https://www.baidu.com/", "http://baidu.com")
-//                // 允许的授权范围
-//                .scopes("all");
     }
 
     /**

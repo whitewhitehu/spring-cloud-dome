@@ -7,7 +7,7 @@ import com.spdata.common.dept.Dept;
 import com.spdata.crm.account.service.AccountService;
 import com.spdata.crm.dept.entity.DeptTree;
 import com.spdata.crm.dept.service.DeptService;
-import com.spdata.crm.tool.SecurityTool;
+import com.spdata.crm.tool.SpringOauth2SecurityTool;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +32,7 @@ public class DeptController {
     public BaseResul DeptList() {
         BaseResul resul = new BaseResul();
         try {
-            Account account = accountService.findAccount(SecurityTool.getSecurityUserName());
+            Account account = accountService.findAccount(SpringOauth2SecurityTool.getSecurityUserName());
             List<DeptTree> deptTrees = deptService.getDeptTree(account.getDeptId());
             resul.setData(deptTrees);
         } catch (Exception e) {

@@ -44,6 +44,7 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.authenticationEntryPoint(entryPoint).accessDeniedHandler(deniedHandler);
         resources.tokenServices(defaultTokenServices());
+        resources.resourceId(null);
     }
 
     @Override

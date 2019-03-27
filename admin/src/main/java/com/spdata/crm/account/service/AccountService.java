@@ -9,9 +9,8 @@ import com.spdata.common.account.Account;
 import com.spdata.common.base.BaseService;
 import com.spdata.common.role.Role;
 import com.spdata.crm.account.entity.AccountVO;
-import com.spdata.crm.tool.SecurityTool;
+import com.spdata.crm.tool.SpringOauth2SecurityTool;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -111,7 +110,7 @@ public class AccountService extends BaseService<AccountDao, AccountVO> {
          * 如果部门ID为空 则根据当前账户的部门进行查询
          */
         if (pageParameter.getParament() == null || pageParameter.getParament().getDeptId() == null) {
-            Account account = accountDao.findAccount(SecurityTool.getSecurityUserName());
+            Account account = accountDao.findAccount(SpringOauth2SecurityTool.getSecurityUserName());
             String json = JSON.toJSONString(account);
             AccountVO accountVO = JSON.parseObject(json, AccountVO.class);
             pageParameter.setParament(accountVO);
