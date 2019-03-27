@@ -1,6 +1,5 @@
-package com.spdata.resource.server.clientdetails.entity;
+package com.spdata.common.clientdetail;
 
-import com.spdata.common.clientdetail.OauthClientDetails;
 import lombok.Getter;
 import lombok.Setter;
 

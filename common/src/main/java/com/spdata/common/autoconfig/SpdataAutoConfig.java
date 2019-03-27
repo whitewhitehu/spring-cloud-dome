@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import com.spdata.common.autoconfig.web.webConfig;
+import com.spdata.common.autoconfig.web.WebMvcConfiguration;
 
 /**
  * @author yangqifang
@@ -12,7 +12,7 @@ import com.spdata.common.autoconfig.web.webConfig;
  * @data 2019/3/17-22:37
  **/
 @Configuration
-@Import(value = {webConfig.class})
+@Import(value = {WebMvcConfiguration.class})
 @ComponentScan("com.spdata.common.autoconfig")
 @ConditionalOnProperty(prefix = "spdata.autoconfig",value = "enable",havingValue = "true")
 public class SpdataAutoConfig {

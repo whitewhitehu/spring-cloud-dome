@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.spdata.resource.server.clientdetails.mapper.ClientDetailsMapper">
-
     <insert id="save">
         insert into oauth_client_details
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -22,4 +21,11 @@
             <if test="webServerRedirectUri != null">#{webServerRedirectUri} ,</if>
         </trim>
     </insert>
+    <update id="update">
+        UPDATE oauth_client_details SET
+        <if test="webServerRedirectUri != null">
+            web_server_redirect_uri=#{webServerRedirectUri},
+        </if>
+        WHERE client_id=#{clientId}
+    </update>
 </mapper>

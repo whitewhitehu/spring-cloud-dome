@@ -13,18 +13,15 @@ import java.nio.charset.Charset;
 
 /**
  * @author yangqifang
- * @描述:
- * @data 2019/3/17-22:40
+ * @date 2019/3/17-22:40
+ * @deprecated spring mvc 配置
  **/
 @Configuration
-public class webConfig implements WebMvcConfigurer {
-    private Logger logger = LoggerFactory.getLogger(webConfig.class);
+public class WebMvcConfiguration implements WebMvcConfigurer {
+    private Logger logger = LoggerFactory.getLogger(WebMvcConfiguration.class);
 
     @Bean
     HttpMessageConverters fastJsonConfigure() {
-        /**
-         * FastJson
-         */
         FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
         logger.info("开始加载FastJson:" + System.currentTimeMillis());
         FastJsonConfig fastJsonConfig = new FastJsonConfig();

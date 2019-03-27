@@ -5,6 +5,7 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${server.port}
+
 spring:
   application:
     name: resource-server-oath2
