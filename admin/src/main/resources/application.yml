@@ -36,3 +36,7 @@ eureka:
   server:
     servlet:
       context-path: ${server.servlet.path}
+#openfeign 配置
+feign:
+  hystrix:
+    enabled: true

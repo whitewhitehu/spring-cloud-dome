@@ -5,7 +5,7 @@ import com.spdata.common.autoconfig.oauth.SpdataAuthenticationEntryPoint;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.security.oauth2.OAuth2ClientProperties;
+import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -40,8 +40,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     private String ClientSecret;
     @Value("${security.oauth2.authorization.check-token-access}")
     private String CheckTokenAccessURL;
-    @Autowired
-    OAuth2ClientProperties oAuth2ClientProperties;
+
     @Autowired
     private SpdataAccessDeniedHandler accessDeniedHandler;
     @Autowired

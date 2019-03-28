@@ -39,7 +39,7 @@ public class SpringOauth2SecurityTool {
      */
     public static String getTokenValue() {
         OAuth2Authentication auth2Authentication = (OAuth2Authentication) getAuthentication();
-        OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) auth2Authentication.getUserAuthentication().getDetails();
+        OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) auth2Authentication.getDetails();
         return details.getTokenValue();
     }
 

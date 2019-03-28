@@ -46,3 +46,7 @@ pagehelper:
 spdata:
   autoconfig:
     enable: true
+logging:
+  level:
+    root: info
+    com.spdata.resource.server: debug

@@ -8,8 +8,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 /**
  * @author yangqifang
- * @描述:
- * @data 2019/3/17-20:55
+ * @date 2019/3/17-20:55
+ * @deprecated :
  **/
 @SpringBootApplication(exclude = {UserDetailsServiceAutoConfiguration.class})
 @EnableResourceServer
