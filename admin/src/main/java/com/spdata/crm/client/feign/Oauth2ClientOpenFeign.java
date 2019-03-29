@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @date 2019/3/27-20:43
  * @deprecated : 远程调用resource-server-oath2服务接口
  **/
-@FeignClient(name = "resource-server-oath2", fallback = Oauth2ClienFeignFallback.class, configuration = feignConfiguration.class)
+@FeignClient(value = "resource-server-oath2", fallback = Oauth2ClienFeignFallback.class)
 public interface Oauth2ClientOpenFeign {
     @RequestMapping(value = "/resources/client/save", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public BaseResul clientSave(@RequestBody MyOauthClientDetail myOauthClientDetail);
+    BaseResul clientSave(@RequestBody MyOauthClientDetail myOauthClientDetail);
 
     @RequestMapping(value = "/resources/client/update", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public BaseResul updateClient(@RequestBody MyOauthClientDetail myOauthClientDetail);
+    BaseResul updateClient(@RequestBody MyOauthClientDetail myOauthClientDetail);
 }

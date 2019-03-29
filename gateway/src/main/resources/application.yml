@@ -19,6 +19,10 @@ zuul:
       path: /admin/**
       sensitiveHeaders: null
       strip-Prefix: false #strip-Prefix 携带前缀 为true则不携带
+    resource-server-oath2:
+      serverID: resource-server-oath2
+      path: /resources/**
+      strip-prefix: false
   add-host-header: true
   sensitive-headers: Access-Control-Allow-Origin,Access-Control-Allow-Methods
   strip-prefix: false
@@ -30,7 +34,6 @@ server:
 logging:
   level:
     root: info
-    org.springframework.cloud.netflix.zuul: debug
 hystrix:
   command:
     default:

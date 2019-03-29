@@ -2,7 +2,6 @@ logging:
   level:  # 日志级别
     root: info
     com.spdata: debug
-    org.springframework.security: debug
 server:
   port: 8763
   servlet:
@@ -40,3 +39,8 @@ eureka:
 feign:
   hystrix:
     enabled: true
+hystrix:
+  shareSecurityContext: true
+  threadpool:
+    default:
+      coreSize: 100

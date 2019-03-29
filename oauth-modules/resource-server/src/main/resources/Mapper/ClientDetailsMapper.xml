@@ -23,9 +23,11 @@
     </insert>
     <update id="update">
         UPDATE oauth_client_details SET
-        <if test="webServerRedirectUri != null">
-            web_server_redirect_uri=#{webServerRedirectUri},
-        </if>
+        <trim suffixOverrides=",">
+            <if test="webServerRedirectUri != null">
+                web_server_redirect_uri=#{webServerRedirectUri}
+            </if>
+        </trim>
         WHERE client_id=#{clientId}
     </update>
 </mapper>

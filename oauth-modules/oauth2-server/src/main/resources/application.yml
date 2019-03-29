@@ -4,9 +4,8 @@ server:
     context-path: /auth/
 logging:
   level:
-    root: warn
+    root: info
     com.spdata: debug
-    org.springframework.security: debug
 spring:
   application:
     name: server-oauth2

@@ -1,6 +1,7 @@
 package com.spdata.crm.tool;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
@@ -13,6 +14,7 @@ import java.util.Collection;
  * @author yangqifang
  */
 public class SpringOauth2SecurityTool {
+    
     /**
      * 授权信息
      *

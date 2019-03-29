@@ -49,4 +49,3 @@ spdata:
 logging:
   level:
     root: info
-    com.spdata.resource.server: debug

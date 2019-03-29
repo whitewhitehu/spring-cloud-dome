@@ -5,15 +5,15 @@ import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
-import org.springframework.stereotype.Component;
 
 /**
  * @author yangqifang
  * @date 2019/3/28-14:26
  * @deprecated : openfeign 拦截器
  **/
-@Component
+@Configuration
 public class FeignRequestInterceptor implements RequestInterceptor {
     Logger logger = LoggerFactory.getLogger(FeignRequestInterceptor.class);
 
@@ -24,7 +24,9 @@ public class FeignRequestInterceptor implements RequestInterceptor {
      */
     @Override
     public void apply(RequestTemplate requestTemplate) {
-        logger.info(requestTemplate.url());
+        logger.info(Thread.currentThread().getName() + "\t" + requestTemplate.url());
         requestTemplate.header(HttpHeaders.AUTHORIZATION, "bearer " + SpringOauth2SecurityTool.getTokenValue());
     }
+
+
 }

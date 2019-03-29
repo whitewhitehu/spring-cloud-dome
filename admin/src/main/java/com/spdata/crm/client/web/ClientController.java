@@ -5,8 +5,10 @@ import com.spdata.common.clientdetail.MyOauthClientDetail;
 import com.spdata.crm.client.feign.Oauth2ClientOpenFeign;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author yangqifang
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping(value = "/client")
-@ResponseStatus(HttpStatus.OK)
 public class ClientController {
     @Autowired
     private Oauth2ClientOpenFeign oauth2ClientOpenFeign;
@@ -23,6 +24,7 @@ public class ClientController {
     @ApiOperation("添加客户端")
     @PostMapping(value = "/save")
     public BaseResul save(@RequestBody MyOauthClientDetail clientDetail) {
+
         BaseResul resul = oauth2ClientOpenFeign.clientSave(clientDetail);
         return resul;
     }
