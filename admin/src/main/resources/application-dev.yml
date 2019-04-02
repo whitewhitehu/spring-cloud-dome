@@ -4,7 +4,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/webdb?serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://database:3306/webdb?serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
     username: root
     password: 712yqf
     initialSize: 5
@@ -38,12 +38,12 @@ security:
     client:
       id: spdata
       client-secret: secret
-      user-authorization-uri: http://localhost:8762/auth/oauth/authorize
+      user-authorization-uri: http://oauth2-host:8762/auth/oauth/authorize
       grant-type: password
       scope: all
-      access-token-uri: http://localhost:8762/auth/oauth/token
+      access-token-uri: http://oauth2-host:8762/auth/oauth/token
     resource:
-      userInfoUri: http://localhost:8762/auth/user
+      userInfoUri: http://oauth2-host:8762/auth/user
       id: spdata
     authorization:
-      check-token-access: http://localhost:8762/auth/oauth/check_token
+      check-token-access: http://oauth2-host:8762/auth/oauth/check_token

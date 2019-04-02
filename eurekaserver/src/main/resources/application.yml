@@ -2,15 +2,15 @@ server:
   port: 8761
 eureka:
   instance:
-    hostname: localhost
+    hostname: eureka-host
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${server.port}
     metadata-map:
       user.name: ${spring.security.user.name}
       user.password: ${spring.security.user.password}
   client:
-    registerWithEureka: true # 将自己也注册
-    fetchRegistry: true #获取注册表
+    registerWithEureka: false # 将自己也注册
+    fetchRegistry: false #获取注册表
     serviceUrl:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
 spring:

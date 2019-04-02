@@ -3,4 +3,4 @@ spring:
     config:
       label: master
       profile: dev
-      uri: http://127.0.0.1:10001
+      uri: http://config-host:10001

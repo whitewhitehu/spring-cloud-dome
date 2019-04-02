@@ -1,9 +1,10 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone:  http://spdata:spdata@localhost:8761/eureka/
+      defaultZone:  http://spdata:spdata@eureka-host:8761/eureka/
   instance:
     prefer-ip-address: true
+    instance-id: ${eureka.instance.ip-address}:${server.port}
 spring:
   application:
     name: server-gateway

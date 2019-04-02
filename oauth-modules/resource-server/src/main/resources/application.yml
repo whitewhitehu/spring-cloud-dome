@@ -1,10 +1,10 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone:  http://spdata:spdata@localhost:8761/eureka/
+      defaultZone:  http://spdata:spdata@eureka-host:8761/eureka/
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:${server.port}
+    instance-id: ${eureka.instance.ip-address}:${server.port}
 
 spring:
   application:
@@ -12,7 +12,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/webdb?serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://database:3306/webdb?serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
     username: root
     password: 712yqf
     initialSize: 5

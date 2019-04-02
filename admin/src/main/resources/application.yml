@@ -24,10 +24,10 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://spdata:spdata@localhost:8761/eureka/
+      defaultZone: http://spdata:spdata@eureka-host:8761/eureka/
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:${server.port}
+    instance-id: ${eureka.instance.ip-address}:${server.port}
     metadata-map:
       management.context-path: ${server.servlet.path}/actuator
     home-page-url: ${server.servlet.path}
