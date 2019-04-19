@@ -10,6 +10,7 @@ import com.spdata.crm.dept.service.DeptService;
 import com.spdata.crm.tool.SpringOauth2SecurityTool;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class DeptController {
     private AccountService accountService;
 
     @GetMapping(value = "/deptlist")
+    @PreAuthorize("hasRole('ADMIN')")
     public BaseResul DeptList() {
         BaseResul resul = new BaseResul();
         try {
@@ -44,6 +46,7 @@ public class DeptController {
     }
 
     @PostMapping(value = "/save")
+    @PreAuthorize("hasRole('ADMIN')")
     public BaseResul save(@RequestBody Dept dept) {
         BaseResul resul = new BaseResul();
         try {
@@ -58,6 +61,7 @@ public class DeptController {
     }
 
     @PostMapping(value = "/update")
+    @PreAuthorize("hasRole('ADMIN')")
     public BaseResul update(@RequestBody Dept dept) {
         BaseResul resul = new BaseResul();
         try {

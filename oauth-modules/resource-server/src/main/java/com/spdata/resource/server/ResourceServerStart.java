@@ -9,7 +9,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 /**
  * @author yangqifang
  * @date 2019/3/17-20:55
- * @deprecated :
  **/
 @SpringBootApplication(exclude = {UserDetailsServiceAutoConfiguration.class})
 @EnableResourceServer

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author yangqifang
  * @date 2019/3/27-19:46
- * @deprecated :
  **/
 @RestController
 @RequestMapping(value = "/client/")

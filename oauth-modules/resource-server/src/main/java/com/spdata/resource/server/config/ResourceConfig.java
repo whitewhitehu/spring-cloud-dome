@@ -16,8 +16,7 @@ import javax.sql.DataSource;
 
 /**
  * @author yangqifang
- * @描述:
- * @data 2019/3/17-21:00
+ * @date : 2019/3/17-21:00
  **/
 @Configuration
 public class ResourceConfig extends ResourceServerConfigurerAdapter {

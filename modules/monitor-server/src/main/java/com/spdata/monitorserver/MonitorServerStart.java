@@ -8,9 +8,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 /**
  * @author yangqifang
  */
+@SpringBootApplication
 @EnableEurekaClient
 @EnableAdminServer
-@SpringBootApplication
 public class MonitorServerStart {
 
     public static void main(String[] args) {

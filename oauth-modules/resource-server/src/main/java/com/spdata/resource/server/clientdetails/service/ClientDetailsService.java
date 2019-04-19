@@ -11,7 +11,7 @@ import java.util.UUID;
 /**
  * @author yangqifang
  * @date 2019/3/26-13:08
- * @deprecated :
+ * @描述:
  **/
 @Service
 public class ClientDetailsService extends BaseService<ClientDetailsMapper, MyOauthClientDetail> {

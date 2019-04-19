@@ -7,19 +7,25 @@ spring:
         registration:
           spdata:
             provider: spdata
-            clientId: spdata
-            clientSecret: spdata
+            client-id: spdata
+            client-secret: secret
             client-name: spdata
-            AuthorizationGrantType: authorization_code
-            redirect-uri-template: "{baseUrl}/login/oauth2/callback/{registrationId}"
-            scope: all
+            authorization-grant-type: authorization_code
+            redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: all,read
         provider:
           spdata:
             authorization-uri: http://127.0.0.1:8762/auth/oauth/authorize
             token-uri: http://127.0.0.1:8762/auth/oauth/token
             userInfoUri: http://127.0.0.1:8765/resources/user/info
+#            userNameAttribute: data
 server:
   port: 9000
+  servlet:
+    session:
+      cookie:
+        name: monitor-sessionID
+    context-path: /monitor
 eureka:
   client:
     serviceUrl:
