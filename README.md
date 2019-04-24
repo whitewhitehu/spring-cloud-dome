@@ -1,11 +1,11 @@
-* **`基于spring boot 2.0.8开发的springcloud脚手架 目前集成了spring security oauth2 (server and client)、
+**`基于spring boot 2.0.8开发的springcloud脚手架 目前集成了spring security oauth2 (server and client)、
 springboot-admin、openfeign、hystrix,zuul（后续会替换成gateway），config.....等组件 
 不需要再搭建项目上花费太多时间`**
 
 ```$xslt
 project 
 |---admin 管理模块 主要为前端项目提供接口
-|---common 基础模块 放置项目中所欲要用到的实体类
+|---common 基础模块 放置项目中所欲要用到的实体类 (目前这个模块中存在自动配置 后面我会剔除)
 |--eurekaserver 注册中心
 |--gateway zuul 网关
 |--modules
