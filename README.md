@@ -2,10 +2,11 @@
 springboot-admin、openfeign、hystrix,zuul（后续会替换成gateway），config.....等组件 
 不需要再搭建项目上花费太多时间`**
 
+[前端项目 请点这里](https://github.com/yangqifang/SB-cloud-UI)
 ```$xslt
 project 
-|---admin 管理模块 主要为前端项目提供接口
-|---common 基础模块 放置项目中所欲要用到的实体类 (目前这个模块中存在自动配置 后面我会剔除)
+|--admin 管理模块 主要为前端项目提供接口
+|--common 基础模块 放置项目中所欲要用到的实体类 (目前这个模块中存在自动配置 后面我会剔除)
 |--eurekaserver 注册中心
 |--gateway zuul 网关
 |--modules
