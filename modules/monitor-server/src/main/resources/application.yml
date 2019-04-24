@@ -36,6 +36,8 @@ eureka:
     metadata-map:
       user.name: "spdata"
       user.password: "spdata"
+      management.context-path: ${server.servlet.context-path}/actuator
+    health-check-url-path: ${server.servlet.context-path}/actuator/health
 
 logging:
   level:

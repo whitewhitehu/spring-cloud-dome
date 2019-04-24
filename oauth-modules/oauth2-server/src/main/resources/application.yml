@@ -51,8 +51,8 @@ eureka:
     prefer-ip-address: true #使用ip注册
     instance-id: ${eureka.instance.ip-address}:${server.port}
     metadata-map:
-      management.context-path: ${server.servlet.path}/actuator
-    home-page-url: ${server.servlet.path}
+      management.context-path: ${server.servlet.context-path}actuator
+    health-check-url-path: ${server.servlet.context-path}/actuator/health
   client:
     serviceUrl:
       defaultZone: http://spdata:spdata@eureka-host:8761/eureka/

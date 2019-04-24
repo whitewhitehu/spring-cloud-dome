@@ -54,11 +54,7 @@ public class Oauth2WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .authorizedClientService(authorizedClientService())
                 .userInfoEndpoint().customUserType(customOAuth2User.class, "spdata");
         http.csrf().disable();
+        http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         super.configure(http);
-    }
-
-    @Bean
-    RestTemplate restTemplate() {
-        return new RestTemplate();
     }
 }

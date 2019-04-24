@@ -5,6 +5,9 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${eureka.instance.ip-address}:${server.port}
+    metadata-map:
+      management.context-path: ${server.servlet.context-path}/actuator
+    health-check-url-path: ${server.servlet.context-path}/actuator/health
 
 spring:
   application:
