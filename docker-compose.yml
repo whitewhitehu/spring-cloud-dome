@@ -4,5 +4,37 @@ services:
     container_name: eureka
     image: eureka:0.0.1-SNAPSHOT
     restart: always
-    networks:
-      - defult
+    ports:
+      - 8761:8761
+  oatuh2:
+    container_name: oatuh2
+    image: oatuh2:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - 8762:8762
+  gateway:
+    container_name: gateway
+    image: gateway:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - 80:80
+  resource:
+    container_name: resource-server
+    image: resource:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - 8765:8765
+  mysql:
+    container_name: mysql-docker-server
+    image: mysql:5.7
+    restart: always
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --innodb_use_native_aio=0 --explicit_defaults_for_timestamp
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - /docker/mysql-docker-server/data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    external_links:
+      - database
+      - mysql-docker-server:database

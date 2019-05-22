@@ -30,8 +30,8 @@ project
        2.0.8.RELEASE
 ### spring cloud version
        Finchley.SR2
-###界面预览
-![授权码登陆界面](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(4).jpg)
+### 界面预览
+![](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(4).jpg)
 ![](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(5).jpg)
 ![](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(6).jpg)
 ![](http://www.cnblogs.com/images/cnblogs_com/yangqifang/1412844/o_a1%20(2).jpg)
