@@ -1,0 +1,6 @@
+version: "3"
+services:
+  eureka:
+    container_name: eureka
+    image: eureka:0.0.1-SNAPSHOT
+    restart: always
