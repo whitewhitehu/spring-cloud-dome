@@ -60,4 +60,14 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/109230-release-ZNDMNQ/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/109230-snapshot-aGYM3a/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

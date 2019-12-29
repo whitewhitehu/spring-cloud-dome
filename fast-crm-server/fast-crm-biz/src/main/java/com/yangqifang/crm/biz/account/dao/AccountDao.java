@@ -1,6 +1,6 @@
 package com.yangqifang.crm.biz.account.dao;
 
-import com.yangqifang.common.base.BaseInterface;
+import com.yangqifang.common.base.BaseDaoInterface;
 import com.yangqifang.crm.api.account.dto.AccountDto;
 import com.yangqifang.crm.api.account.entity.AbstractAccount;
 import com.yangqifang.crm.api.role.entity.Role;
@@ -13,7 +13,7 @@ import java.util.List;
  * @author yangqifang
  */
 @Mapper
-public interface AccountDao extends BaseInterface<AccountDto> {
+public interface AccountDao extends BaseDaoInterface<AccountDto> {
     @Override
     boolean update(@Param(value = "account") AccountDto account);
 

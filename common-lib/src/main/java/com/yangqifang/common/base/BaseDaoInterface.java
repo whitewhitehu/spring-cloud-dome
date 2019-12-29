@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-public interface BaseInterface<T> {
-    Collection<T> findByIds(Collection<?> listid);
+public interface BaseDaoInterface<T> {
+    Collection<T> findByIds(Collection<Serializable> listid);
 
     T findByid(T t);
 
@@ -19,5 +19,13 @@ public interface BaseInterface<T> {
 
     boolean update(T t);
 
+    boolean batchUpdate(Collection<T> collection);
+
     boolean deltct(Serializable id);
+
+    T findByid(Serializable id);
+
+    boolean batchDelect(Collection<Serializable> id);
+
+    boolean batchSave(Collection<T> collection);
 }

@@ -1,6 +1,6 @@
 package com.yangqifang.crm.biz.permission.dao;
 
-import com.yangqifang.common.base.BaseInterface;
+import com.yangqifang.common.base.BaseDaoInterface;
 import com.yangqifang.crm.api.permission.entity.Permission;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 @Mapper
-public interface PermissionDao extends BaseInterface<Permission> {
+public interface PermissionDao extends BaseDaoInterface<Permission> {
     List<Permission> findRolePermission(@Param(value = "username") String username);
 
     List<Permission> findRoleIdPermission(@Param(value = "id") Integer id);

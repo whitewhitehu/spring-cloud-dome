@@ -1,16 +1,15 @@
 package com.yangqifang.crm.biz.role.dao;
 
-import com.yangqifang.common.base.BaseInterface;
+import com.yangqifang.common.base.BaseDaoInterface;
 import com.yangqifang.crm.api.role.entity.Role;
 import com.yangqifang.crm.api.role.parm.RoleInput;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
-public interface RoleDao extends BaseInterface<Role> {
+public interface RoleDao extends BaseDaoInterface<Role> {
     List<Role> findAccountRole(@Param("AccountName") String AccountName);
 
     @Override

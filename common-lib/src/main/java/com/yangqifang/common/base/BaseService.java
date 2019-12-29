@@ -9,42 +9,46 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class BaseService<D extends BaseInterface<T>, T> {
+public abstract class BaseService<D extends BaseDaoInterface<T>, T> {
     @Autowired
-    private D d;
+    private D dao;
 
     public T findById(T id) {
-        return d.findByid(id);
+        return dao.findByid(id);
     }
 
-    public Collection<T> findByList(Collection<T> collection) {
-        return d.findByIds(collection);
+    public Collection<T> findByIds(Collection<Serializable> collection) {
+        return dao.findByIds(collection);
     }
 
     public boolean save(T entity) {
-        return d.save(entity);
+        return dao.save(entity);
     }
 
     public T insert(T t) {
-        return d.insert(t);
+        return dao.insert(t);
     }
 
     public boolean delect(T t) {
-        return d.delect(t);
+        return dao.delect(t);
     }
 
     boolean update(T t) {
-        return d.update(t);
+        return dao.update(t);
     }
 
+    @Deprecated
     public PageInfo<T> findByPage(PageParameter<T> t) {
         PageHelper.startPage(t.getPagenum(), t.getPagesize());
-        List<T> list = d.findByPage(t.getParament());
+        List<T> list = dao.findByPage(t.getParament());
         PageInfo<T> pageInfo = new PageInfo<T>(list);
         return pageInfo;
     }
 
     public boolean delect(Serializable id) {
-        return d.deltct(id);
+        return dao.deltct(id);
+    }
+    boolean batchUpdate(Collection<T> collection){
+        return dao.batchUpdate(collection);
     }
 }

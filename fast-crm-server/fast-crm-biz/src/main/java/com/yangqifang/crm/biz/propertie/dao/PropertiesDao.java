@@ -1,6 +1,6 @@
 package com.yangqifang.crm.biz.propertie.dao;
 
-import com.yangqifang.common.base.BaseInterface;
+import com.yangqifang.common.base.BaseDaoInterface;
 import com.yangqifang.crm.api.propertie.entity.Properties;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * @author yangqifang
  */
 @Mapper
-public interface PropertiesDao extends BaseInterface<Properties> {
+public interface PropertiesDao extends BaseDaoInterface<Properties> {
     @Override
     boolean save(Properties properties);
 

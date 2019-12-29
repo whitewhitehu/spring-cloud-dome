@@ -1,6 +1,6 @@
 package com.yangqifang.crm.biz.menu.dao;
 
-import com.yangqifang.common.base.BaseInterface;
+import com.yangqifang.common.base.BaseDaoInterface;
 import com.yangqifang.crm.api.menu.entity.Menu;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 @Mapper
-public interface MenuDao extends BaseInterface<Menu> {
+public interface MenuDao extends BaseDaoInterface<Menu> {
     @Override
     boolean save(@Param("menu") Menu menu);
 
