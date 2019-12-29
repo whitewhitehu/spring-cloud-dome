@@ -1,6 +1,0 @@
-spring:
-  cloud:
-    config:
-      label: master
-      profile: dev
-      uri: http://config-host:10001

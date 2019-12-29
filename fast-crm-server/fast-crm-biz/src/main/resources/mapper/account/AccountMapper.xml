@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yangqifang.crm.biz.account.dao.AccountDao">
+    <sql id="sql">
+                id,username,password,dept_id,givename,avatar,mailbox,country,phone,is_del
+    </sql>
+    <resultMap id="base_account" type="com.yangqifang.crm.api.account.entity.AbstractAccount">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="dept_id" property="deptId"></result>
+        <result property="givename" column="givename"/>
+        <result property="avatar" column="avatar"/>
+        <result property="mailbox" column="mailbox"/>
+        <result property="country" column="country"/>
+        <result property="is_del" column="is_del"/>
+        <result property="phone" column="phone"></result>
+    </resultMap>
+    <resultMap id="account_role" type="com.yangqifang.crm.api.account.dto.AccountDto" extends="base_account">
+        <collection property="roles" javaType="java.util.List" select="findRolesByAccountID"
+                    column="id=id">
+            <id column="id" property="id"/>
+            <result property="name" column="name"/>
+        </collection>
+    </resultMap>
+    <select id="findByid" resultMap="account_role">
+        select
+        <include refid="sql"/>
+        from account
+        where id=#{account.id}
+    </select>
+    <insert id="save" useGeneratedKeys="true" keyColumn="id" keyProperty="account.id">
+        insert into account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="account.id != null">id,</if>
+            <if test="account.username != null">username,</if>
+            <if test="account.password != null">password,</if>
+            <if test="account.givename != null">givename,</if>
+            <if test="account.mailbox != null">mailbox,</if>
+            <if test="account.country != null">country,</if>
+            <if test="account.deptId != null">dept_id,</if>
+        </trim>
+        value
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="account.id != null">#{account.id},</if>
+            <if test="account.username != null">#{account.username},</if>
+            <if test="account.password != null">#{account.password},</if>
+            <if test="account.givename != null">#{account.givename},</if>
+            <if test="account.mailbox != null">#{account.mailbox},</if>
+            <if test="account.country != null">#{account.country},</if>
+            <if test="account.deptId != null">#{account.deptId},</if>
+        </trim>
+    </insert>
+    <update id="delect">
+        update account set is_del=0 where id=#{account.id}
+    </update>
+    <select id="findByPage" resultMap="account_role">
+        select
+        <include refid="sql"/>
+        FROM account
+        <where>
+            <if test="account.deptId != null">FIND_IN_SET(dept_id, getDeptChild(#{account.deptId} ))</if>
+            <if test="account !=null and account.is_del==true">
+                and is_del=#{account.is_del}
+            </if>
+        </where>
+    </select>
+    <update id="updatePassword">
+        update account set password=#{account.password} where username=#{account.username}
+    </update>
+    <select id="findAccountByUsername" resultMap="base_account">
+        select
+        <include refid="sql"/>
+        from account
+        where username=#{username,jdbcType=VARCHAR}
+    </select>
+    <insert id="saveRole">
+        insert into account_role(account_id, role_id) values
+        <foreach collection="roles" item="item" separator=",">
+            (#{account_id},#{item.id})
+        </foreach>
+    </insert>
+    <update id="updateAvatar">
+        update account set avatar=#{Avatar} where username=#{username}
+    </update>
+    <update id="update" parameterType="com.yangqifang.crm.api.account.entity.AbstractAccount">
+        update account
+        <set>
+            <if test="account.password != null">password=#{account.password},</if>
+            <if test="account.mailbox != null">mailbox=#{account.mailbox},</if>
+            <if test="account.country!=null">country=#{account.country},</if>
+            <if test="account.givename!=null">givename=#{account.givename},</if>
+            <if test="account.deptId != null">dept_id=#{account.deptId}</if>
+        </set>
+        where id=#{account.id}
+    </update>
+    <delete id="delectAccountRoleRelation">
+      delete from account_role where account_id=#{id}
+    </delete>
+    <select id="findRolesByAccountID" resultType="com.yangqifang.crm.api.role.entity.Role">
+            select role.* from role join account_role on role.id=account_role.role_id and role.is_del=0 where account_role.account_id=#{id}
+    </select>
+</mapper>

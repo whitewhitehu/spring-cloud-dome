@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: fast-oauth2-server
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.101.32.241:8848
+        group: fast-oauth2-server
+      discovery:
+        server-addr: 47.101.32.241:8848

@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: fast-oauth2-server
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.101.32.241:8848
+        group: fast-manage-server
+      discovery:
+        server-addr: 47.101.32.241:8848
+dubbo:
+  registry:
+    address: nacos://47.101.32.241:8848
+  application:
+    name: fast-manage-dubbo
+  protocol:
+    name: dubbo

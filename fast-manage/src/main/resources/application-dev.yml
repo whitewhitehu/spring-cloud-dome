@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: fast-manage-server
+  freemarker:
+    template-loader-path: classpath:/template
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    suffix: .ftl
+security:
+  oauth2:
+    client:
+      id: spdata
+      client-secret: secret
+      user-authorization-uri: http://oauth2-host:8762/auth/oauth/authorize
+      grant-type: password
+      scope: all
+      access-token-uri: http://oauth2-host:8762/auth/oauth/token
+    resource:
+      userInfoUri: http://oauth2-host:8762/auth/user
+      id: spdata
+    authorization:
+      check-token-access: http://oauth2-host:8762/auth/oauth/check_token

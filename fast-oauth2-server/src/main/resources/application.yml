@@ -1,0 +1,29 @@
+server:
+  port: 8762
+  servlet:
+    context-path: /auth/
+    session:
+      cookie:
+        name: oauth-session
+logging:
+  level:
+    com.yangqifang: debug
+spring:
+  security:
+    filter:
+      order: 3
+  freemarker:
+    template-loader-path: classpath:/template
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    suffix: .ftl
+dubbo:
+  registry:
+    address: nacos://47.101.32.241:8848
+  application:
+    name: fast-oauth2-dubbo
+  protocol:
+    name: dubbo

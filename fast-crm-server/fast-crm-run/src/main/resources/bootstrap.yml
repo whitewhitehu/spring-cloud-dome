@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: fast-crm-server
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.101.32.241:8848
+        group: fast-crm-server
+      discovery:
+        server-addr: 47.101.32.241:8848
+dubbo:
+  # 配置服务信息
+  application:
+    name: dubbo-consumer
+  registry:
+    address: nacos://47.101.32.241:8848
