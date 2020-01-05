@@ -2,6 +2,7 @@ logging:
   level:  # 日志级别
     com.spdata: debug
     org.springframework.security: debug
+    com.alibaba.nacos.client: warn
 server:
   port: 8763
   servlet:

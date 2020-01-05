@@ -1,6 +1,6 @@
 package com.yangqifang.crm.biz.sysdict.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageInfo;
 import com.yangqifang.common.base.PageParameter;
 import com.yangqifang.crm.api.sysdict.entity.SysDict;

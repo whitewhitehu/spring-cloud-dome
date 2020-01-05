@@ -1,6 +1,6 @@
 package com.yangqifang.crm.biz.account.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageInfo;
 import com.yangqifang.common.base.PageParameter;
 import com.yangqifang.crm.api.account.dto.AccountDto;
@@ -8,7 +8,6 @@ import com.yangqifang.crm.api.account.entity.AbstractAccount;
 import com.yangqifang.crm.api.account.service.ICrmAccountService;
 import com.yangqifang.crm.biz.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  * @author: yangqifang

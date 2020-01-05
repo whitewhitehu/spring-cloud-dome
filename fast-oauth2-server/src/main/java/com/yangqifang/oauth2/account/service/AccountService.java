@@ -2,7 +2,7 @@ package com.yangqifang.oauth2.account.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
-import com.alibaba.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.Reference;
 import com.yangqifang.crm.api.account.entity.AbstractAccount;
 import com.yangqifang.crm.api.account.service.ICrmAccountService;
 import com.yangqifang.crm.api.permission.entity.Permission;

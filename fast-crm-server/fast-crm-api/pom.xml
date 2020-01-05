@@ -30,12 +30,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.yangqifang</groupId>
-            <artifactId>common-lib</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
             <version>5.1.8</version>

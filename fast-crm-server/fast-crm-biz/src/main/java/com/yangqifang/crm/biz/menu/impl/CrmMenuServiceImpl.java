@@ -1,6 +1,6 @@
 package com.yangqifang.crm.biz.menu.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.Service;
 import com.yangqifang.crm.api.menu.entity.Menu;
 import com.yangqifang.crm.api.menu.service.ICrmMenuService;
 import com.yangqifang.crm.biz.menu.service.MenuService;

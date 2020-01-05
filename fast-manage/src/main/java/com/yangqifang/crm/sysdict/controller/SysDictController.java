@@ -1,6 +1,6 @@
 package com.yangqifang.crm.sysdict.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.Reference;
 import com.github.pagehelper.PageInfo;
 import com.yangqifang.common.base.BaseResul;
 import com.yangqifang.common.base.Basemessage;

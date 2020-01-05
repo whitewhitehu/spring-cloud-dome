@@ -8,6 +8,8 @@ spring:
         group: fast-manage-server
       discovery:
         server-addr: 47.101.32.241:8848
+  main:
+    allow-bean-definition-overriding: true
 dubbo:
   registry:
     address: nacos://47.101.32.241:8848

@@ -1,6 +1,5 @@
 package com.yangqifang.crm.account.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.yangqifang.common.base.BaseResul;
@@ -29,9 +28,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/Account")
 public class AccountController {
-    @Reference
+    @org.apache.dubbo.config.annotation.Reference
     private ICrmAccountService accountService;
-    @Reference
+    @org.apache.dubbo.config.annotation.Reference
     private ICrmRoleService roleService;
 
     /**

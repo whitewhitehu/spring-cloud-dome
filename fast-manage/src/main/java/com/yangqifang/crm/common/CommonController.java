@@ -1,6 +1,6 @@
 package com.yangqifang.crm.common;
 
-import com.alibaba.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.Reference;
 import com.yangqifang.common.base.BaseResul;
 import com.yangqifang.crm.api.account.service.ICrmAccountService;
 import com.yangqifang.crm.api.menu.service.ICrmMenuService;

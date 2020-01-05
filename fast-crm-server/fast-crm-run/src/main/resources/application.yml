@@ -1,6 +1,7 @@
 logging:
   level:
     com.yangqifang: debug
+    com.alibaba.nacos.client.naming: error
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -20,6 +21,8 @@ spring:
     validationQuery: select 1
     # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
     filters: stat,wall,slf4j
+  main:
+    allow-bean-definition-overriding: true
 mybatis:
   type-aliases-package: com.yangqifang.crm.api
   mapper-locations: classpath*:mapper/*.xml,classpath*:mapper/*/*.xml

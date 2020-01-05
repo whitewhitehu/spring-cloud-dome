@@ -1,6 +1,6 @@
 package com.yangqifang.crm.biz.permission.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.yangqifang.common.base.PageParameter;

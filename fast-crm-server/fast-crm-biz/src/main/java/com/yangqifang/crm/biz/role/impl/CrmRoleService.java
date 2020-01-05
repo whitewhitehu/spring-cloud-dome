@@ -1,6 +1,6 @@
 package com.yangqifang.crm.biz.role.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.Service;
 import com.yangqifang.crm.api.role.entity.Role;
 import com.yangqifang.crm.api.role.parm.RoleInput;
 import com.yangqifang.crm.api.role.service.ICrmRoleService;

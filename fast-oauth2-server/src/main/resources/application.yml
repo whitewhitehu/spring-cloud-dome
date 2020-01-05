@@ -8,6 +8,7 @@ server:
 logging:
   level:
     com.yangqifang: debug
+    com.alibaba.nacos.client: warn
 spring:
   security:
     filter:
@@ -20,6 +21,8 @@ spring:
     expose-request-attributes: false
     expose-session-attributes: false
     suffix: .ftl
+  main:
+    allow-bean-definition-overriding: true
 dubbo:
   registry:
     address: nacos://47.101.32.241:8848

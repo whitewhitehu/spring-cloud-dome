@@ -1,6 +1,6 @@
 package com.yangqifang.crm.biz.dept.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.Service;
 import com.yangqifang.crm.api.dept.dto.DeptTree;
 import com.yangqifang.crm.api.dept.entity.Dept;
 import com.yangqifang.crm.api.dept.service.ICrmDeptService;

@@ -12,38 +12,22 @@
     <artifactId>fast-crm-run</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>${dubbo.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
+            <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-registry-nacos</artifactId>
             <version>${dubbo-registry-nacos.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.alibaba.spring</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring-context-support.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId> spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>${spring.cloud.alibaba.version}</version>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-            <version>${spring.cloud.alibaba.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,9 +49,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                </configuration>
             </plugin>
         </plugins>
     </build>
