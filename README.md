@@ -1,6 +1,5 @@
-**`基于spring boot 2.0.8开发的springcloud脚手架 目前集成了spring security oauth2 (server and client)、
-springboot-admin、openfeign、hystrix,zuul（后续会替换成gateway），config.....等组件 
-不需要再搭建项目上花费太多时间`**
+**`基于spring boot 2.0.8 目前集成了spring security oauth2 (server and client)、
+springboot-admin、openfeign、hystrix,zuul（后续会替换成gateway），config.....等组件 `**
 
 [前端项目 请点这里](https://github.com/yangqifang/SB-cloud-UI)
 ```$xslt
